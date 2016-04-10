@@ -11,7 +11,7 @@ import AddressBook
 import Contacts
 import MessageUI
 
-class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var followTable: UITableView!
     
@@ -34,7 +34,11 @@ class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        if friends.count > 10 {
+            return 10
+        } else {
+            return friends.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -115,8 +119,8 @@ class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITabl
     @IBAction func btnInviteFriendsViaSMS(sender: UIButton) {
         let messageVC = MFMessageComposeViewController()
         
-        messageVC.body = "Ê vào quẩy với tui trên Funeye không? funeye1.2 do nhe ";
-        messageVC.recipients = ["Enter Nguyen Ngoc Dung"]
+        messageVC.body = "Ê vào quẩy với tui trên Funeye không? http://funeye.net";
+        //messageVC.recipients = ["Enter Nguyen Ngoc Dung"]
         messageVC.messageComposeDelegate = self;
         
         self.presentViewController(messageVC, animated: false, completion: nil)
@@ -140,6 +144,24 @@ class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITabl
     }
     
     @IBAction func btnInviteFriendsViaEmail(sender: UIButton) {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        }
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        //mailComposerVC.setToRecipients(["nurdin@gmail.com"])
+        mailComposerVC.setSubject("Ê vào quẩy với tui trên Funeye không?")
+        mailComposerVC.setMessageBody("Cùng tôi trải nghiệm Funeye nhé? http://funeye.net", isHTML: false)
+        
+        return mailComposerVC
+    }
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
         
     }
 }

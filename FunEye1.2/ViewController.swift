@@ -41,7 +41,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         
         tableView.estimatedRowHeight = 550
-        
         tableView.rowHeight = setHeightCell()
         
         getDataAccess()
@@ -162,26 +161,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
-    /*
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }*/
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as? PostCell {
             
             let post = posts[indexPath.row]
-            cell.configureCell(post, indexPath: indexPath.row)
+            
             cell.imgCommentButton.tag = indexPath.row
             cell.imgCommentButton.addTarget(self, action: #selector(ViewController.viewComment(_:)), forControlEvents: .TouchUpInside)
             
             cell.btnLike.tag = indexPath.row
             cell.btnLike.addTarget(self, action: #selector(ViewController.likePost(_:)), forControlEvents: .TouchUpInside)
+        
+            cell.btnViewProfile.tag = indexPath.row
+            cell.btnViewProfile.addTarget(self, action: #selector(ViewController.viewProfileUser(_:)), forControlEvents: .TouchUpInside)
             
+            cell.configureCell(post, indexPath: indexPath.row)
             return cell
         } else {
             return PostCell()
@@ -192,9 +187,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if videoPlayNow >= 0 {
             let nsIndexPath = NSIndexPath(forRow: videoPlayNow, inSection: 0)
-            if let cell = tableView.cellForRowAtIndexPath(nsIndexPath) {
-            
-            } else {
+            //if let cell = tableView.cellForRowAtIndexPath(nsIndexPath) {
+            if tableView.cellForRowAtIndexPath(nsIndexPath) == nil {
                 pauseAllVideo()
             }
         }
@@ -212,6 +206,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: false)
         }
     }
+
     
     func update() {
         if let cells = tableView.visibleCells as? [UITableViewCell] where cells != [] {
@@ -358,15 +353,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         Alamofire.request(.PUT, URL_PUT_LIKE_POST(postId, isLike: post.isLikePost))
     }
     
-    func likePostAction(post: Post) {
-        
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ViewCommentVC" {
             if let viewCommentVC = segue.destinationViewController as? ViewCommentVC {
                 if let data = sender as? String {
                     viewCommentVC.post_id = data
+                }
+            }
+        } else if segue.identifier == "ProfileVC" {
+            if let profileVC = segue.destinationViewController as? ProfileVC {
+                if let data = sender as? String {
+                    profileVC.userId = data
                 }
             }
         }
@@ -409,10 +406,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             imageView.alpha = 0.0
         }
         
-        
-        
-        
-        
         PLAYER_NOW.play()
         
         let postId = posts[videoPlayNow].postId
@@ -421,6 +414,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             Alamofire.request(.PUT, URL_PUT_LIKE_POST(postId, isLike: true))
         }
         
+    }
+    
+    func likePostAction() {
+        
+    }
+    
+    func viewProfileUser(sender: UIButton) {
+        let tag = sender.tag
+        let userId = posts[tag].userName
+        print("tag \(userId)")
+        self.performSegueWithIdentifier("ProfileVC", sender: userId)
     }
 }
 

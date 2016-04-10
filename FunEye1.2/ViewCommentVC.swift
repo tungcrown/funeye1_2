@@ -48,7 +48,7 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "More older comment!")
-        refreshControl.addTarget(self, action: #selector(ViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         commentTableView.addSubview(self.refreshControl)
     }
     

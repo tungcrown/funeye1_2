@@ -23,6 +23,16 @@ let URL_GET_FRIEND_FOLLOW = URL_MAIN_DOMAIN + "/api/suggestfriends?access_token=
 let URL_GET_CATEGORIES = URL_MAIN_DOMAIN + "/api/categoryInfo?access_token=\(ACCESS_TOKEN)"
 let URL_AVATAR_NIL = URL_MAIN_DOMAIN + "/img/logo-white.png"
 
+let URL_POST_VIDEO = URL_MAIN_DOMAIN + "/api/articles?access_token=\(ACCESS_TOKEN)"
+
+func URL_GET_SINGLE_POST(postID: String) -> String {
+    return URL_MAIN_DOMAIN + "/api/articles/\(postID)?access_token=\(ACCESS_TOKEN)"
+}
+
+func URL_GET_NOTIFICATION(page: String) -> String {
+    return URL_MAIN_DOMAIN + "/api/notification?page=\(page)&access_token=\(ACCESS_TOKEN)"
+}
+
 func URL_GET_CATEGORY_POST(id: String) -> String {
     return URL_MAIN_DOMAIN + "/api/categories/"+id+"?page=1&sort=creared&access_token=\(ACCESS_TOKEN)"
 }

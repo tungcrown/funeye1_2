@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import Alamofire
 
 class ReviewVideoVC: UIViewController, UITextFieldDelegate {
     
@@ -27,7 +28,8 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
     
     var urlVideos: [NSURL]!
     var urlAudio: [NSURL]!
-
+    var urlVideoDone: NSURL!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,18 +42,23 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
         
         mergerVideos(urlVideos)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ReviewVideoVC.showInputTextField(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.showInputTextField(_:)))
         tap.numberOfTapsRequired = 1
         
         txtShowText.addGestureRecognizer(tap)
         
-        let tapVideoView = UITapGestureRecognizer(target: self, action: #selector(ReviewVideoVC.tappedVideoView(_:)))
+        let tapVideoView = UITapGestureRecognizer(target: self, action: #selector(self.tappedVideoView(_:)))
         tapVideoView.numberOfTapsRequired = 1
         uivReviewVideo.addGestureRecognizer(tapVideoView)
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidAppear(animated)
+        removeLoopVideo()
     }
     
     func keyboardWillShow() {
@@ -68,6 +75,7 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
     
     func keyboardHideShow() {
         uivNavigate.hidden = false
+        uivInputMain.hidden = true
         txtInputText.resignFirstResponder()
         if txtInputText.text == "" {
             txtShowText.text = "Enter your caption"
@@ -85,6 +93,7 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
     }
     
     func tappedVideoView(sender: UITapGestureRecognizer) {
+        print("tap video")
         if ((player.rate != 0) && (player.error == nil)) {
             player.pause()
         }else {
@@ -128,6 +137,7 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
         CutVideoRecordingSquare(composition)
     }
     
+    
     func CutVideoRecordingSquare(composition: AVAsset) {
         
         let asset: AVAsset = composition
@@ -137,7 +147,14 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
         
         let videoComposition: AVMutableVideoComposition = AVMutableVideoComposition()
         
-        videoComposition.frameDuration = CMTimeMake(1, 60)
+        //new
+        /*
+        let trackFrameRate: Float = 0
+        let videoCompressionProperties: NSDictionary = [AVVideoAverageBitRateKey: 6000000, AVVideoProfileLevelKey: AVVideoProfileLevelH264High40]
+        let maxKeyFrameInterval: NSNumber = videoCompressionProperties.objectForKey(AVVideoMaxKeyFrameIntervalKey)
+        */
+        //new
+        videoComposition.frameDuration = CMTimeMake(1, 30)
         videoComposition.renderSize = CGSizeMake(clipVideoTrack.naturalSize.height, clipVideoTrack.naturalSize.height)
         
         
@@ -159,8 +176,9 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
         
         let tempPath = createTempPath(PATH_SAVE_RCORDING_VIDEO)
         
-        let exporter = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality)!
+        let exporter = AVAssetExportSession(asset: asset, presetName: AVAssetExportPreset640x480)!
         exporter.videoComposition = videoComposition
+    
         exporter.outputFileType = AVFileTypeQuickTimeMovie
         exporter.outputURL = tempPath
         exporter.shouldOptimizeForNetworkUse = true
@@ -199,9 +217,10 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
         
          let tempPath = createTempPath(PATH_SAVE_RCORDING_VIDEO)
          
-         let exporter = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality)!
+         let exporter = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPreset640x480)!
          exporter.outputFileType = AVFileTypeQuickTimeMovie
          exporter.outputURL = tempPath
+         
          exporter.shouldOptimizeForNetworkUse = true
          
          exporter.exportAsynchronouslyWithCompletionHandler({
@@ -211,6 +230,7 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
          print("outpur nsurl: \(outputURL)")
          dispatch_async(dispatch_get_main_queue(), {
             
+            self.urlVideoDone = outputURL
             self.player = AVPlayer(URL: outputURL)
             let playerController = AVPlayerViewController()
             
@@ -252,5 +272,49 @@ class ReviewVideoVC: UIViewController, UITextFieldDelegate {
     @IBAction func btnBackToNewfeeds(sender: UIButton) {
 //        performSegueWithIdentifier("BackToNewfeeds", sender: nil)
         removeLoopVideo()
+    }
+    
+    @IBAction func postVideo(sender: UIButton) {
+        print("post")
+        //let url = URL_POST_VIDEO
+        let url = NSURL(string: URL_POST_VIDEO)!
+        let content = txtShowText.text!.dataUsingEncoding(NSUTF8StringEncoding)!
+        let cate = "1".dataUsingEncoding(NSUTF8StringEncoding)!
+        
+        let size = resolutionSizeForLocalVideo(urlVideoDone)
+        print(size)
+        
+        Alamofire.upload(.POST, url, multipartFormData: { multipartFormData in
+            
+            //multipartFormData.appendBodyPart(data: videoData, name: "file")
+            multipartFormData.appendBodyPart(fileURL: self.urlVideoDone, name: "file")
+            multipartFormData.appendBodyPart(data: content, name: "content")
+            multipartFormData.appendBodyPart(data: cate, name: "category")
+            
+        }) { encodingResult in
+            //when upload done
+            switch encodingResult {
+            case .Success(let upload, _, _):
+                upload.responseJSON(completionHandler: { response in
+                    
+                    print("response upload \(response)")
+                    
+                    if let info = response.result.value as? Dictionary<String, AnyObject> {
+                        print("info \(info)")
+                    }
+                    
+                })
+                
+                
+            case .Failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func resolutionSizeForLocalVideo(url:NSURL) -> CGSize? {
+        guard let track = AVAsset(URL: url).tracksWithMediaType(AVMediaTypeVideo).first else { return nil }
+        let size = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform)
+        return CGSize(width: fabs(size.width), height: fabs(size.height))
     }
 }

@@ -87,7 +87,9 @@ class CameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         
         /*captureSession?.stopRunning()
         previewLayer?.removeFromSuperlayer()*/
-        captureSession?.sessionPreset = AVCaptureSessionPresetHigh
+        //captureSession?.sessionPreset = AVCaptureSessionPresetMedium
+        captureSession?.sessionPreset = AVCaptureSessionPreset640x480
+        
         //captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
         
         var backCamera:AVCaptureDevice! = nil
@@ -98,12 +100,11 @@ class CameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             backCamera = self.cameraWithPosition(AVCaptureDevicePosition.Front)
         }
         
-        
-        
         var error : NSError?
         var input: AVCaptureDeviceInput!
         do {
             input = try AVCaptureDeviceInput(device: backCamera)
+            
         } catch let error1 as NSError {
             error = error1
             input = nil
@@ -259,4 +260,6 @@ class CameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     func pauseAudioMuSic() {
         audioMusicAvplayer.pause()
     }
+    
+    
 }

@@ -10,11 +10,13 @@ import UIKit
 
 class ProfileVC: UIViewController {
     
-    let userId: String = ""
+    var userId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(userId)
+        
+        if userId != nil {
+            print(userId)
+        }
     }
 }

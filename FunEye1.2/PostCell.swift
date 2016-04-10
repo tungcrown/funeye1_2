@@ -30,6 +30,7 @@ class PostCell: UITableViewCell {
     
     @IBOutlet weak var imgCommentButton: UIButton!
     @IBOutlet weak var btnLike: UIButton!
+    @IBOutlet weak var btnViewProfile: UIButton!
     
     var player: AVPlayer!
     
