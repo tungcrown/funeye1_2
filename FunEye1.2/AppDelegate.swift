@@ -53,13 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
         if NSUserDefaults.standardUserDefaults().valueForKey(ACCESS_TOKEN_KEY) == nil {
-            return true
-        } else {
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewControllerWithIdentifier("ViewController") 
+            let viewController = storyboard.instantiateViewControllerWithIdentifier("LoginVC")
             self.window?.rootViewController = viewController
             self.window?.makeKeyAndVisible()
+            return true
+        } else {
             return true
         }
     }

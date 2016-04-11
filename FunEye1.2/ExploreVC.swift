@@ -128,9 +128,4 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-
-    @IBAction func btnBackToNewfeedsVC(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
 }

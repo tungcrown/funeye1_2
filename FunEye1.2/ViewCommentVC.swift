@@ -14,7 +14,6 @@ import SocketIOClientSwift
 class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var commentTableView: UITableView!
-    @IBOutlet weak var uiviewOldCmt: UIView!
     
     var btnPost: UIButton!
     var uivTextField: UIView!

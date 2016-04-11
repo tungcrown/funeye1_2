@@ -325,9 +325,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         posts = DataService.instance.loadingPost
         tableView.reloadData()
     }
+    /*
     @IBAction func btnCameraACTION(sender: UIButton) {
         //pauseAllVideo()
-    }
+    }*/
     func pauseAllVideo() {
         tableView.viewWithTag(99)?.removeFromSuperview()
         PLAYER_NOW.pause()
