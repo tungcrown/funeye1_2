@@ -37,7 +37,9 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         commentTableView.estimatedRowHeight = 70
         commentTableView.rowHeight = UITableViewAutomaticDimension
         
-        print(post_id)
+        if post_id != nil {
+            print(post_id)
+        }
         
         indicator.center = view.center
         view.addSubview(indicator)
@@ -81,21 +83,23 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func keyboardDidShow(notification: NSNotification) {
         print("show keyboard")
         let userInfo: NSDictionary = notification.userInfo!
-        let keyboardSize = userInfo.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue.size
+        //let keyboardSize = userInfo.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue.size
+        let keyboardSize = userInfo.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue.size
         
         self.uivTextField.frame = self.setFrameUiview(keyboardSize.height)
-        
     }
     
     func keyboardWillHide(notification: NSNotification) {
         UIView.animateWithDuration(0.3) {
             
-            self.uivTextField.frame = self.setFrameUiview(0.0)
+            let heightTabBar = self.tabBarController!.tabBar.bounds.height
+            self.uivTextField.frame = self.setFrameUiview(heightTabBar)
         }
     }
     
     func setFrameUiview(bottom: CGFloat) -> CGRect {
         let heightUiview: CGFloat = 45.0
+        //let heightTabBar = self.tabBarController!.tabBar.bounds.height
         let yUivew = self.view.frame.height - heightUiview - bottom
         let widthUiview = self.view.frame.width
         
@@ -103,7 +107,8 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func createInputField() {
-        uivTextField = UIView(frame: setFrameUiview(0.0))
+        let heightTabBar = self.tabBarController!.tabBar.bounds.height
+        uivTextField = UIView(frame: setFrameUiview(heightTabBar))
         uivTextField.backgroundColor=UIColor.whiteColor()
         
         self.view.addSubview(uivTextField)
@@ -178,36 +183,57 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showAlertClickComment()
+        showAlertClickComment(indexPath.row)
         view.endEditing(true)
         
     }
    
-    func showAlertClickComment() {
+    func showAlertClickComment(indexPath: Int) {
+        
+        let comment = comments[indexPath]
+        let commentId = comment.id
+        let userName = comment.userName
+        
         let myActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
-        let blueAction = UIAlertAction(title: "Block", style: UIAlertActionStyle.Destructive) { (action) in
+        let blockAction = UIAlertAction(title: "Block", style: UIAlertActionStyle.Destructive) { (action) in
             print("Block action button tapped")
         }
         
-        let redAction = UIAlertAction(title: "Trả lời", style: UIAlertActionStyle.Default) { (action) in
-            print("Trả lời action button tapped")
+        let replyAction = UIAlertAction(title: "Trả lời", style: UIAlertActionStyle.Default) { (action) in
+            self.replyComment(userName)
         }
         
-        let yellowAction = UIAlertAction(title: "Xóa", style: UIAlertActionStyle.Default) { (action) in
-            print("Xóa action button tapped")
+        let deleteAction = UIAlertAction(title: "Xóa", style: UIAlertActionStyle.Destructive) { (action) in
+            self.deleteComment(commentId)
         }
         
         let cancelAction = UIAlertAction(title: "Hủy Bỏ", style: UIAlertActionStyle.Cancel) { (action) in
             print("Cancel action button tapped")
         }
         
-        myActionSheet.addAction(blueAction)
-        myActionSheet.addAction(redAction)
-        myActionSheet.addAction(yellowAction)
+        if comment.userId == USER_ID {
+            myActionSheet.addAction(deleteAction)
+        } else {
+            myActionSheet.addAction(blockAction)
+            myActionSheet.addAction(replyAction)
+        }
+        
         myActionSheet.addAction(cancelAction)
         
         self.presentViewController(myActionSheet, animated: true, completion: nil)
+    }
+    
+    func deleteComment(commentId: String) {
+        print("delete \(URL_DELETE_COMMENT(commentId))")
+        
+        Alamofire.request(.DELETE, URL_DELETE_COMMENT(commentId))
+    }
+    
+    func replyComment(userName: String) {
+        print("replay comment")
+        textField.text  = "@\(userName) "
+        textField.becomeFirstResponder()
     }
     
     func loadCommentData() {
@@ -236,8 +262,5 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 print("comment nil")
             }
         }
-    }
-    @IBAction func backNewfeeds(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -69,7 +69,7 @@ class Notification {
                 self._userSenderName = userName
             }
             
-            if let userId = from["_id"] as? String {
+            if let userId = from["id"] as? String {
                 self._userSenderId = userId
             }
             

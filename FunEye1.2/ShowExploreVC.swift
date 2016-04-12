@@ -13,17 +13,19 @@ import Alamofire
 import SocketIOClientSwift
 
 class ShowExploreVC: ViewController {
-    @IBOutlet weak var lblTitleCategory: UILabel!
-    @IBOutlet weak var imgCategoryCover: UIImageView!
     
     var data: String!
     var cateName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        lblTitleCategory.text = cateName
-        imgCategoryCover.image = UIImage(named: "category_\(data)")
+        
+        let image = UIImage(named: "category_\(data)")! as UIImage
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.setBackgroundImage(image,
+                                forBarMetrics: .Default)
+        self.title = cateName
+        //self.navigationController?.title = cateName
     }
     
     override func getPostFromAlamofire(url: String) {
@@ -48,10 +50,6 @@ class ShowExploreVC: ViewController {
                 print(response)
             }
         }
-    }
-    
-    @IBAction func backToExploreVC() {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

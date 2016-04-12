@@ -28,6 +28,7 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         setupRefreshConrol()
         
         loadDataViaAPI()
+        putNotificationRead()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -42,22 +43,31 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         if let cell = tableView.dequeueReusableCellWithIdentifier("NotificationCell") as? NotificationCell {
             let noti = notifications[indexPath.row]
-            cell.configureCell(noti)
             
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(NotificationsVC.myMethodToHandleTap(_:)))
             tap.numberOfTapsRequired = 1
             cell.messageTxt.addGestureRecognizer(tap)
            
+            cell.imgVideoThumb.tag = indexPath.row
+            let tapImg = UITapGestureRecognizer(target: self, action: #selector(NotificationsVC.showViewSingleVC(_:)))
+            tapImg.numberOfTapsRequired = 1
+            cell.imgVideoThumb.userInteractionEnabled = true
+            cell.imgVideoThumb.addGestureRecognizer(tapImg)
+            
+            cell.configureCell(noti)
             return cell
         } else {
             return NotificationCell()
         }
     }
     
+    func putNotificationRead() {
+        Alamofire.request(.PUT, URL_PUT_READ_NOTIFICATION)
+    }
+    
     func loadDataViaAPI() {
-        //let url =  URL_GET_NOTIFICATION
-        let url = "http://funeye.net:8000/api/notification?page=1&access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InR1bmdjcm93bjIwMTZAZ21haWwuY29tIiwiaWF0IjoxNDU5NDgzNzU0fQ.UUNbN_yLZktV1wZKv7umlGMT8q_b10sOEFyBSS5hZHM"
+        let url =  URL_GET_NOTIFICATION("1")
         
         Alamofire.request(.GET, url).responseJSON { response in
             if let res = response.result.value as? Dictionary<String, AnyObject> {
@@ -137,17 +147,47 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             if let value = attributeValue {
                 print("You tapped on \(attributeName) and the value is: \(value)")
                 let dataPass = value
-                self.performSegueWithIdentifier("ViewSinglePostVC", sender: dataPass)
+                //self.performSegueWithIdentifier("ViewSinglePostVC", sender: dataPass)
+                if let profileVC = storyboard!.instantiateViewControllerWithIdentifier("ProfileVC") as? ProfileVC {
+                    profileVC.userId = dataPass
+                    self.navigationController?.showViewController(profileVC, sender: nil)
+                }
             }
             
         }
+    }
+    
+    func showViewSingleVC(sender: UITapGestureRecognizer) {
+        let tag = sender.view!.tag
+        let dataPass = notifications[tag].id
+        print("dataPass \(dataPass)")
+        self.performSegueWithIdentifier("ViewSinglePostVC", sender: dataPass)
+        /*
+        if let notificationsVC = storyboard!.instantiateViewControllerWithIdentifier("ViewSinglePostVC") as? ViewSinglePostVC {
+            notificationsVC.postId = notifications[tag].posId
+            notificationsVC.isViewNextComment = true
+            self.navigationController?.showViewController(notificationsVC, sender: nil)
+        }*/
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ViewSinglePostVC" {
             if let notificationsVC = segue.destinationViewController as? ViewSinglePostVC {
                 if let dctUrl = sender as? String {
-                    notificationsVC.postId = dctUrl
+                    for noti in notifications {
+                        if noti.id == dctUrl {
+                            if (noti.posId != nil) {
+                                if noti.type == "comment" {
+                                    notificationsVC.postId = noti.posId
+                                    notificationsVC.isViewNextComment = true
+                                } else {
+                                    notificationsVC.postId = noti.posId
+                                    notificationsVC.isViewNextComment = false
+                                }
+                            }
+                            break
+                        }
+                    }
                 }
             }
         }

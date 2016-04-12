@@ -13,8 +13,19 @@ class Friend {
     private var _message: String!
     private var _username: String!
     
+    private var _arrayFollower: [String]?
+    private var _arrayFollowing: [String]?
+    
     var name: String {
         return _name
+    }
+    
+    var arrayFollower: [String]? {
+        return _arrayFollower
+    }
+    
+    var arrayFollowing: [String]? {
+        return _arrayFollowing
     }
     
     var username: String {
@@ -57,6 +68,26 @@ class Friend {
             self._avatarUrl = avatar
         } else {
             self._avatarUrl = URL_AVATAR_NIL
+        }
+        
+        if let arFollower = dictionary["follower"] as? [Int] {
+            self._arrayFollower = arFollower.map(
+                {
+                    (number: Int) -> String in
+                    return String(number)
+            })
+        } else {
+            self._arrayFollower = nil
+        }
+        
+        if let arFollowing = dictionary["following"] as? [Int] {
+            self._arrayFollowing = arFollowing.map(
+                {
+                    (number: Int) -> String in
+                    return String(number)
+            })
+        } else {
+            self._arrayFollowing = nil
         }
         
         if let username = dictionary["username"] as? String {

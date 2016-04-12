@@ -23,7 +23,21 @@ let URL_GET_FRIEND_FOLLOW = URL_MAIN_DOMAIN + "/api/suggestfriends?access_token=
 let URL_GET_CATEGORIES = URL_MAIN_DOMAIN + "/api/categoryInfo?access_token=\(ACCESS_TOKEN)"
 let URL_AVATAR_NIL = URL_MAIN_DOMAIN + "/img/logo-white.png"
 
+let URL_PUT_READ_NOTIFICATION = URL_MAIN_DOMAIN + "/api/notification?access_token=\(ACCESS_TOKEN)"
+
 let URL_POST_VIDEO = URL_MAIN_DOMAIN + "/api/articles?access_token=\(ACCESS_TOKEN)"
+
+func URL_USER_GET_INFO(userID: String) -> String {
+    return URL_MAIN_DOMAIN + "/api/funner/info/id/\(userID)?access_token=\(ACCESS_TOKEN)"
+}
+
+func URL_USER_GET_POST(userID: String) -> String {
+    return URL_MAIN_DOMAIN + "/api/funner/post/id/\(userID)?access_token=\(ACCESS_TOKEN)"
+}
+
+func URL_USER_GET_POST_LIKE(userID: String) -> String {
+    return URL_MAIN_DOMAIN + "/api/funner/like/id/\(userID)?access_token=\(ACCESS_TOKEN)"
+}
 
 func URL_GET_SINGLE_POST(postID: String) -> String {
     return URL_MAIN_DOMAIN + "/api/articles/\(postID)?access_token=\(ACCESS_TOKEN)"
@@ -39,6 +53,10 @@ func URL_GET_CATEGORY_POST(id: String) -> String {
 
 func URL_GET_COMMENT_POST(post_id: String) -> String{
     return URL_MAIN_DOMAIN + "/api/articles/\(post_id)/comments?access_token=\(ACCESS_TOKEN)"
+}
+
+func URL_DELETE_COMMENT(comment_id: String) -> String {
+    return URL_MAIN_DOMAIN + "/api/comments/\(comment_id)?access_token=\(ACCESS_TOKEN)"
 }
 
 func URL_PUT_VIEW_POST(post_id: String) -> String {

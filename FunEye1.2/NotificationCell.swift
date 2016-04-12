@@ -35,12 +35,12 @@ class NotificationCell: UITableViewCell {
         let myRange = NSRange(location: 0, length: textClickLength) // range of "Swift"
         if notification.posId != nil {
             
-            let postId = notification.posId!
+            let notiId = notification.userSenderId
             let multipleAttributes = [
                 NSForegroundColorAttributeName: UIColor.darkTextColor(),
                 //NSForegroundColorAttributeName: UIFont(name:"HelveticaNeue-Bold", size: 16.0),
                 NSFontAttributeName: UIFont.boldSystemFontOfSize(14.0),
-                "MyCustomAttributeName": postId]
+                "MyCustomAttributeName": notiId]
             
             myString.addAttributes(multipleAttributes, range: myRange)
             

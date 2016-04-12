@@ -37,6 +37,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -44,9 +46,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.rowHeight = setHeightCell()
         
         getDataAccess()
+    
         getPostFromAlamofire(URL_GET_NEW_FEED)
         setupSocketIO()
         setupRefreshControl()
+    
     }
     
     func setHeightCell() -> CGFloat {
@@ -82,6 +86,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func getPostFromAlamofire(url: String) {
+        
+        let img = UIImage(named: "logo")
+        self.navigationItem.titleView = UIImageView(image: img)
+        
         DataService.instance.loadPosts()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.onPostsLoaded), name: "PostsLoaded", object: nil)
         
@@ -120,7 +128,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func setupSocketIO() {
+        print("USER_ID \(USER_ID)")
+        
+        
         socket.on("viewed") {data, ack in
+            print("nhay view ")
             if let postId = data as? [Dictionary<String, AnyObject>] {
                 if let str = postId[0]["id"] as? Int {
                     for (index, post) in self.posts.enumerate() {
@@ -134,6 +146,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
                 
             }
+            //self.socket.emit("username", 10)
         }
         socket.on("liked") {data, ack in
             if let postId = data as? [Dictionary<String, AnyObject>] {
@@ -150,6 +163,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
                 
             }
+        }
+        
+        socket.on("notification") {data, ack in 
+            print("data notification \(data)")
+            for item in self.tabBarController!.tabBar.items! {
+                if item.tag == 1 {
+                    item.badgeValue = "1"
+                }
+            }
+        }
+        
+        socket.on("connect") {data, ack in
+            self.socket.emit("username", USER_ID)
         }
         socket.connect()
     }
@@ -172,11 +198,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             cell.btnLike.tag = indexPath.row
             cell.btnLike.addTarget(self, action: #selector(ViewController.likePost(_:)), forControlEvents: .TouchUpInside)
-        
+        /*
             cell.btnViewProfile.tag = indexPath.row
             cell.btnViewProfile.addTarget(self, action: #selector(ViewController.viewProfileUser(_:)), forControlEvents: .TouchUpInside)
+            */
             
             cell.configureCell(post, indexPath: indexPath.row)
+            
+            cell.lblUserName.tag = indexPath.row
+            let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.viewProfileUser(_:)))
+            tap.numberOfTapsRequired = 1
+            cell.lblUserName.userInteractionEnabled = true
+            cell.lblUserName.addGestureRecognizer(tap)
+            
+            
             return cell
         } else {
             return PostCell()
@@ -341,35 +376,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func viewComment(sender: UIButton) {
         //pauseAllVideo()
         let commentUrl = posts[sender.tag].postId
-        self.performSegueWithIdentifier("ViewCommentVC", sender: commentUrl)
+        
+        if let viewCommentVC = storyboard!.instantiateViewControllerWithIdentifier("ViewCommentVC") as? ViewCommentVC {
+            
+            viewCommentVC.post_id = commentUrl
+            self.navigationController?.showViewController(viewCommentVC, sender: nil)
+            //presentViewController(viewCommentVC, animated: true, completion: nil)
+        }
+        //self.performSegueWithIdentifier("ViewCommentVC", sender: commentUrl)
     }
     
     func likePost(sender: UIButton) {
         print("like post")
         let post = posts[sender.tag]
-        
         let postId = post.postId
         post.isLikePost = !post.isLikePost
         
         Alamofire.request(.PUT, URL_PUT_LIKE_POST(postId, isLike: post.isLikePost))
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ViewCommentVC" {
-            if let viewCommentVC = segue.destinationViewController as? ViewCommentVC {
-                if let data = sender as? String {
-                    viewCommentVC.post_id = data
-                }
-            }
-        } else if segue.identifier == "ProfileVC" {
-            if let profileVC = segue.destinationViewController as? ProfileVC {
-                if let data = sender as? String {
-                    profileVC.userId = data
-                }
-            }
-        }
-    }
-    
+   
     var isDouleTap = false
     func tapToVideo(sender: UITapGestureRecognizer) {
         isDouleTap = false
@@ -417,15 +442,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    func likePostAction() {
+    func viewProfileUser(sender: UITapGestureRecognizer) {
+        let tag = sender.view!.tag
+        let userId = posts[tag].userId
         
-    }
-    
-    func viewProfileUser(sender: UIButton) {
-        let tag = sender.tag
-        let userId = posts[tag].userName
-        print("tag \(userId)")
-        self.performSegueWithIdentifier("ProfileVC", sender: userId)
+        if let profileVC = storyboard!.instantiateViewControllerWithIdentifier("ProfileVC") as? ProfileVC {
+            profileVC.userId = userId
+            self.navigationController?.showViewController(profileVC, sender: nil)
+        }
     }
 }
 

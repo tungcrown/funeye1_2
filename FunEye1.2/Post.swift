@@ -20,6 +20,7 @@ class Post: NSObject, NSCoding {
     private var _videoThumb: String!
     private var _timeCreate: String!
     
+    private var _userId: String!
     private var _userName: String!
     private var _userAvatar: String!
     
@@ -75,6 +76,10 @@ class Post: NSObject, NSCoding {
         set {
             _videoPath = newValue
         }
+    }
+    
+    var userId: String {
+        return _userId
     }
     
     var userName: String {
@@ -159,6 +164,9 @@ class Post: NSObject, NSCoding {
         }
         
         if let arrayUser = dictionary["creator"] as? Dictionary<String, AnyObject> {
+            if let userId = arrayUser["id"] as? String {
+                self._userId = userId
+            }
             if let userName = arrayUser["fullName"] as? String {
                 self._userName = userName
             }
@@ -196,13 +204,13 @@ class Post: NSObject, NSCoding {
         self._videoPath = aDecoder.decodeObjectForKey("videoPath") as? String
         self._videoThumb = aDecoder.decodeObjectForKey("videoThumb") as? String
         self._timeCreate = aDecoder.decodeObjectForKey("timeCreate") as? String
+        self._userId = aDecoder.decodeObjectForKey("userId") as? String
         self._userName = aDecoder.decodeObjectForKey("userName") as? String
         self._userAvatar = aDecoder.decodeObjectForKey("userAvatar") as? String
         self._likes = aDecoder.decodeObjectForKey("likes") as? Int
         self._comments = aDecoder.decodeObjectForKey("comments") as? Int
         self._views = aDecoder.decodeObjectForKey("views") as? Int
         self._shares = aDecoder.decodeObjectForKey("shares") as? Int
-        
         self._isLikePost = aDecoder.decodeObjectForKey("isLikePost") as! Bool
     }
     
@@ -213,6 +221,7 @@ class Post: NSObject, NSCoding {
         aCoder.encodeObject(self._videoPath, forKey: "videoPath")
         aCoder.encodeObject(self._videoThumb, forKey: "videoThumb")
         aCoder.encodeObject(self._timeCreate, forKey: "timeCreate")
+        aCoder.encodeObject(self._userId, forKey: "userId")
         aCoder.encodeObject(self._userName, forKey: "userName")
         aCoder.encodeObject(self._userAvatar, forKey: "userAvatar")
         aCoder.encodeObject(self._likes, forKey: "likes")
