@@ -74,7 +74,8 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 if let jsons = res["data"] as? [Dictionary<String, AnyObject>] {
                     for json in jsons {
                         let noti = Notification(dictionary: json)
-                        self.notifications.insert(noti, atIndex:0)
+                        self.notifications.append(noti)
+                        //self.notifications.insert(noti, atIndex:0)
                     }
                     self.notificationsTable.reloadData()
                 }

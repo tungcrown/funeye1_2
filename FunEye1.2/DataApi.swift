@@ -17,7 +17,11 @@ var USER_ID :String!
 
 let URL_MAIN_DOMAIN = "http://funeye.net:8000"
 
+let URL_SIGNIN = URL_MAIN_DOMAIN + "/signin"
+let URL_SIGNUP = URL_MAIN_DOMAIN + "/signup"
+let URL_FORGET_PASSWORD = URL_MAIN_DOMAIN + "/resetPassword"
 let URL_LOGIN_FACEBOOK = URL_MAIN_DOMAIN + "/oauth/fbmobile"
+
 let URL_GET_NEW_FEED = URL_MAIN_DOMAIN + "/api/feed?page=1&access_token=\(ACCESS_TOKEN)"
 let URL_GET_FRIEND_FOLLOW = URL_MAIN_DOMAIN + "/api/suggestfriends?access_token=\(ACCESS_TOKEN)"
 let URL_GET_CATEGORIES = URL_MAIN_DOMAIN + "/api/categoryInfo?access_token=\(ACCESS_TOKEN)"

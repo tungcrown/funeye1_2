@@ -22,57 +22,74 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SxA-rW-YcG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iA-6P-SjE" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
-                                <rect key="frame" x="20" y="157" width="560" height="266"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATn-I7-4N4" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
+                                <rect key="frame" x="20" y="147" width="560" height="300"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RrP-v6-StT">
-                                        <rect key="frame" x="20" y="20" width="520" height="226"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ang-7a-n4F">
+                                        <rect key="frame" x="20" y="20" width="520" height="260"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRd-ea-dfh" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="520" height="42"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nPd-5a-QdI" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="520" height="36"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="2CA-dh-W1y">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="iX4-Ox-QLW">
                                                         <rect key="frame" x="8" y="11" width="20" height="20"/>
                                                     </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fzv-SS-YfY">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwM-qZ-wZS">
                                                         <rect key="frame" x="36" y="7" width="476" height="30"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                     </textField>
                                                 </subviews>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLd-VF-yhE" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="62" width="520" height="42"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2aZ-TP-kLu" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="56" width="520" height="36"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="security" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-7k-Yhl">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="cpD-Fa-ZrU">
                                                         <rect key="frame" x="8" y="11" width="20" height="20"/>
                                                     </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02B-fk-hMq">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPT-tC-KpQ">
                                                         <rect key="frame" x="36" y="7" width="476" height="30"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     </textField>
                                                 </subviews>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyj-kg-DCr" customClass="MaterialButton" customModule="FunEye1_2" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="123" width="520" height="42"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5o-Ht-8zu" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="112" width="520" height="36"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="security" translatesAutoresizingMaskIntoConstraints="NO" id="ycj-bC-XT6">
+                                                        <rect key="frame" x="8" y="11" width="20" height="20"/>
+                                                    </imageView>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TqO-Ng-84A">
+                                                        <rect key="frame" x="36" y="7" width="476" height="30"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8k-Hi-fBX" customClass="MaterialButton" customModule="FunEye1_2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="168" width="520" height="36"/>
                                                 <color key="backgroundColor" red="0.3921568627" green="0.20784313730000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                <state key="normal" title="Đăng nhập với email">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIc-ZD-OQB" customClass="MaterialButton" customModule="FunEye1_2" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="185" width="520" height="42"/>
-                                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                <state key="normal" title="Đăng nhập bằng Facebook">
+                                                <state key="normal" title="Đăng Ký">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="btnLoginFacebook:" destination="U2J-5y-Kyo" eventType="touchUpInside" id="Dej-CZ-KzZ"/>
+                                                    <action selector="btnSignUp:" destination="U2J-5y-Kyo" eventType="touchUpInside" id="4AS-rH-5jv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfJ-m6-1Nx" customClass="MaterialButton" customModule="FunEye1_2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="224" width="520" height="36"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="Trở lại">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnBackToLogin:" destination="U2J-5y-Kyo" eventType="touchUpInside" id="FYY-1I-zd8"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -80,11 +97,154 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="RrP-v6-StT" firstAttribute="leading" secondItem="7iA-6P-SjE" secondAttribute="leading" constant="20" id="1QT-ei-InU"/>
-                                    <constraint firstAttribute="trailing" secondItem="RrP-v6-StT" secondAttribute="trailing" constant="20" id="3a6-lb-2yb"/>
-                                    <constraint firstItem="RrP-v6-StT" firstAttribute="top" secondItem="7iA-6P-SjE" secondAttribute="top" constant="20" id="4jA-zG-fnC"/>
-                                    <constraint firstAttribute="height" constant="266" id="Q82-8U-I9p"/>
-                                    <constraint firstAttribute="bottom" secondItem="RrP-v6-StT" secondAttribute="bottom" constant="20" id="VZ7-t6-IYx"/>
+                                    <constraint firstItem="Ang-7a-n4F" firstAttribute="leading" secondItem="ATn-I7-4N4" secondAttribute="leading" constant="20" id="Kjr-K1-Qja"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ang-7a-n4F" secondAttribute="bottom" constant="20" id="NXh-2q-AZ0"/>
+                                    <constraint firstItem="Ang-7a-n4F" firstAttribute="top" secondItem="ATn-I7-4N4" secondAttribute="top" constant="20" id="QAe-eN-5u9"/>
+                                    <constraint firstAttribute="height" constant="300" id="oEk-Ni-FaF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ang-7a-n4F" secondAttribute="trailing" constant="20" id="pxC-u5-1eo"/>
+                                </constraints>
+                            </view>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iA-6P-SjE">
+                                <rect key="frame" x="20" y="137" width="560" height="395"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRa-hd-Bvg" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="8" width="560" height="280"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RrP-v6-StT">
+                                                <rect key="frame" x="20" y="20" width="520" height="240"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRd-ea-dfh" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="520" height="45"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="2CA-dh-W1y">
+                                                                <rect key="frame" x="8" y="11" width="20" height="20"/>
+                                                            </imageView>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fzv-SS-YfY">
+                                                                <rect key="frame" x="36" y="7" width="476" height="30"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLd-VF-yhE" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="65" width="520" height="45"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="security" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-7k-Yhl">
+                                                                <rect key="frame" x="8" y="11" width="20" height="20"/>
+                                                            </imageView>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02B-fk-hMq">
+                                                                <rect key="frame" x="36" y="7" width="476" height="30"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyj-kg-DCr" customClass="MaterialButton" customModule="FunEye1_2" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="130" width="520" height="45"/>
+                                                        <color key="backgroundColor" red="0.3921568627" green="0.20784313730000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                        <state key="normal" title="Đăng nhập với email">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnLoginEmail:" destination="U2J-5y-Kyo" eventType="touchUpInside" id="pma-63-sUn"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIc-ZD-OQB" customClass="MaterialButton" customModule="FunEye1_2" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="195" width="520" height="45"/>
+                                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                        <state key="normal" title="Đăng nhập bằng Facebook">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnLoginFacebook:" destination="U2J-5y-Kyo" eventType="touchUpInside" id="Dej-CZ-KzZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="RrP-v6-StT" firstAttribute="top" secondItem="SRa-hd-Bvg" secondAttribute="top" constant="20" id="36m-rX-0Gh"/>
+                                            <constraint firstAttribute="trailing" secondItem="RrP-v6-StT" secondAttribute="trailing" constant="20" id="EOY-vh-go4"/>
+                                            <constraint firstAttribute="height" constant="280" id="Zx7-wk-Qjm"/>
+                                            <constraint firstAttribute="bottom" secondItem="RrP-v6-StT" secondAttribute="bottom" constant="20" id="iPF-oc-jSH"/>
+                                            <constraint firstItem="RrP-v6-StT" firstAttribute="leading" secondItem="SRa-hd-Bvg" secondAttribute="leading" constant="20" id="uEX-KS-twW"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FH-CW-zpg" customClass="MaterialView" customModule="FunEye1_2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="308" width="560" height="65"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="r4g-uC-cVc">
+                                                <rect key="frame" x="183" y="5" width="194" height="25"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chưa có tài khoản?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIZ-AN-6Tp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="133" height="25"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBX-oM-s5Z">
+                                                        <rect key="frame" x="138" y="0.0" width="56" height="25"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <state key="normal" title="Đăng ký">
+                                                            <color key="titleColor" red="0.3921568627" green="0.20784313730000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnSignupEmail:" destination="U2J-5y-Kyo" eventType="touchUpInside" id="ele-et-DaL"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="QNg-j9-KSt"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nFY-jZ-Er8">
+                                                <rect key="frame" x="113" y="35" width="156" height="25"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Quên mật khẩu?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRM-JR-H2t">
+                                                        <rect key="frame" x="0.0" y="0.0" width="112" height="25"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWv-at-l3j">
+                                                        <rect key="frame" x="117" y="0.0" width="39" height="25"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <state key="normal" title="Reset">
+                                                            <color key="titleColor" red="0.3921568627" green="0.20784313730000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="forgetPassword:" destination="U2J-5y-Kyo" eventType="touchUpInside" id="5nI-rZ-MsZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="9a7-Mu-ZNK"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="r4g-uC-cVc" firstAttribute="top" secondItem="9FH-CW-zpg" secondAttribute="top" constant="5" id="7nj-m6-sJR"/>
+                                            <constraint firstItem="nFY-jZ-Er8" firstAttribute="top" secondItem="r4g-uC-cVc" secondAttribute="bottom" constant="5" id="IJC-hz-oJa"/>
+                                            <constraint firstItem="nFY-jZ-Er8" firstAttribute="centerX" secondItem="9FH-CW-zpg" secondAttribute="centerX" id="dXC-1Y-HMw"/>
+                                            <constraint firstItem="r4g-uC-cVc" firstAttribute="centerX" secondItem="9FH-CW-zpg" secondAttribute="centerX" id="gBZ-dp-0fR"/>
+                                            <constraint firstAttribute="height" constant="65" id="ukS-wV-fBL"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9FH-CW-zpg" secondAttribute="trailing" id="Epu-SY-zDe"/>
+                                    <constraint firstItem="9FH-CW-zpg" firstAttribute="leading" secondItem="7iA-6P-SjE" secondAttribute="leading" id="HUx-gO-jcv"/>
+                                    <constraint firstItem="SRa-hd-Bvg" firstAttribute="top" secondItem="7iA-6P-SjE" secondAttribute="topMargin" id="KhI-8E-MkF"/>
+                                    <constraint firstItem="9FH-CW-zpg" firstAttribute="top" secondItem="SRa-hd-Bvg" secondAttribute="bottom" constant="20" id="PPu-48-9DJ"/>
+                                    <constraint firstAttribute="height" constant="395" id="PcI-4O-tsb"/>
+                                    <constraint firstItem="SRa-hd-Bvg" firstAttribute="leading" secondItem="7iA-6P-SjE" secondAttribute="leading" id="sKa-m9-hIX"/>
+                                    <constraint firstAttribute="trailing" secondItem="SRa-hd-Bvg" secondAttribute="trailing" id="tIc-PF-88B"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="F5g-sa-efS">
@@ -100,17 +260,26 @@
                             <constraint firstItem="7iA-6P-SjE" firstAttribute="leading" secondItem="FZI-x6-4bx" secondAttribute="leadingMargin" id="0Nv-2b-nmV"/>
                             <constraint firstItem="SxA-rW-YcG" firstAttribute="leading" secondItem="FZI-x6-4bx" secondAttribute="leading" id="7hx-qx-AJJ"/>
                             <constraint firstItem="F5g-sa-efS" firstAttribute="centerX" secondItem="FZI-x6-4bx" secondAttribute="centerX" id="F6a-St-xGf"/>
+                            <constraint firstItem="ATn-I7-4N4" firstAttribute="top" secondItem="F5g-sa-efS" secondAttribute="bottom" constant="40" id="FUs-Qe-rsz"/>
                             <constraint firstItem="Tsh-l6-w4O" firstAttribute="top" secondItem="SxA-rW-YcG" secondAttribute="bottom" id="MBh-1y-Z0W"/>
                             <constraint firstItem="7iA-6P-SjE" firstAttribute="trailing" secondItem="FZI-x6-4bx" secondAttribute="trailingMargin" id="O0S-Lq-eDA"/>
                             <constraint firstItem="SxA-rW-YcG" firstAttribute="top" secondItem="FZI-x6-4bx" secondAttribute="top" id="fii-yI-wvz"/>
                             <constraint firstItem="F5g-sa-efS" firstAttribute="top" secondItem="7mL-R0-ntu" secondAttribute="bottom" constant="50" id="hiy-to-iCn"/>
+                            <constraint firstItem="ATn-I7-4N4" firstAttribute="leading" secondItem="FZI-x6-4bx" secondAttribute="leadingMargin" id="irT-du-NMj"/>
                             <constraint firstAttribute="trailing" secondItem="SxA-rW-YcG" secondAttribute="trailing" id="uHU-Dm-naK"/>
-                            <constraint firstItem="7iA-6P-SjE" firstAttribute="top" secondItem="F5g-sa-efS" secondAttribute="bottom" constant="50" id="vqj-vd-CEV"/>
+                            <constraint firstItem="7iA-6P-SjE" firstAttribute="top" secondItem="F5g-sa-efS" secondAttribute="bottom" constant="30" id="vqj-vd-CEV"/>
+                            <constraint firstItem="ATn-I7-4N4" firstAttribute="trailing" secondItem="FZI-x6-4bx" secondAttribute="trailingMargin" id="yOk-WC-uhw"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="txtInputEmail" destination="Fzv-SS-YfY" id="9fq-km-Wp1"/>
+                        <outlet property="txtInputPass" destination="02B-fk-hMq" id="Gra-sP-7NN"/>
+                        <outlet property="txtSignupEmail" destination="dwM-qZ-wZS" id="uR4-jQ-jMv"/>
+                        <outlet property="txtSignupPassword" destination="TqO-Ng-84A" id="vAN-hz-RAv"/>
+                        <outlet property="txtSignupUsername" destination="IPT-tC-KpQ" id="w1s-MF-MUh"/>
                         <outlet property="uivBackground" destination="SxA-rW-YcG" id="xyr-Yn-RG6"/>
                         <outlet property="uivLogin" destination="7iA-6P-SjE" id="Aka-Fm-HV5"/>
+                        <outlet property="uivSignup" destination="ATn-I7-4N4" id="h3w-ip-lvC"/>
                         <segue destination="muZ-WF-8TL" kind="show" identifier="FirstFollowVC" id="DPG-MB-txe"/>
                     </connections>
                 </viewController>
@@ -121,7 +290,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="jsz-y4-O4N">
             <objects>
-                <tabBarController id="mhg-IU-FlG" customClass="TabBarController" customModule="FunEye1_2" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="FollowVCToNewfeedsVC" id="mhg-IU-FlG" customClass="TabBarController" customModule="FunEye1_2" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleAspectFit" id="kKN-QC-ABB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

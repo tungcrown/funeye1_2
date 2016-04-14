@@ -21,6 +21,9 @@ class ProfileVC: ViewController {
     @IBOutlet weak var lblCountFollowing: UILabel!
     
     var userId: String!
+    var userAvatar: String!
+    var userName: String!
+    
     var user: Friend!
     
     var postUserPost = [Post]()
@@ -29,20 +32,25 @@ class ProfileVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if userId == nil {
-            userId = USER_ID
-        }
-        
         loadUserInfo()
         configureImage()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     override func getPostFromAlamofire(url: String) {
-        if userId != nil {
-            let url = URL_USER_GET_POST(userId)
-            print("url \(url)")
-            getPostFromUrl(url, isLikePost: false)
+        if userId == nil {
+            userId = USER_ID
+        } else {
+            user = Friend(name: userName, id: userId, avatarUrl: userAvatar, message: "")
+            configureInfoUser()
         }
+        let url = URL_USER_GET_POST(userId)
+        print("url \(url)")
+        getPostFromUrl(url, isLikePost: false)
     }
     
     func getPostFromUrl(url: String, isLikePost: Bool) {
@@ -101,6 +109,7 @@ class ProfileVC: ViewController {
     
     func configureInfoUser() {
         lblUserName.text = user.name
+        
         DataService.instance.downloadAndSetImageFromUrl(user.avatarUrl, imgView: imgUserAvatar, imageCache: ViewController.imageCache)
         DataService.instance.downloadAndSetImageFromUrl(user.avatarUrl, imgView: imgUserCover, imageCache: ViewController.imageCache)
         

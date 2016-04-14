@@ -444,10 +444,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func viewProfileUser(sender: UITapGestureRecognizer) {
         let tag = sender.view!.tag
-        let userId = posts[tag].userId
-        
+        let user = posts[tag]
+        let userId = user.userId
+       
         if let profileVC = storyboard!.instantiateViewControllerWithIdentifier("ProfileVC") as? ProfileVC {
             profileVC.userId = userId
+            profileVC.userAvatar = user.userAvatar
+            profileVC.userName = user.userName
+            
             self.navigationController?.showViewController(profileVC, sender: nil)
         }
     }
