@@ -15,6 +15,7 @@ class ProfileVC: ViewController {
     @IBOutlet weak var imgUserCover: UIImageView!
     
     @IBOutlet weak var uivImageCover: UIView!
+    @IBOutlet weak var uivSettingOrFollow: UIView!
     
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblCountFollowers: UILabel!
@@ -39,15 +40,80 @@ class ProfileVC: ViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        if userId == USER_ID {
+            setupTabSetting()
+        } else {
+            setupTabFollow()
+        }
+        
+    }
+    
+    func setupTabFollow() {
+        uivSettingOrFollow.layer.cornerRadius = 3.0
+        
+        let bounds = uivSettingOrFollow.bounds
+        let label = UILabel(frame: bounds)
+        label.textAlignment = NSTextAlignment.Center
+        label.text = "Following"
+        label.textColor = UIColor.whiteColor()
+        
+        let image = UIImage(named: "follow-not")
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRectMake(5.0, 5.0, 25, 25)
+        
+        uivSettingOrFollow.addSubview(label)
+        uivSettingOrFollow.addSubview(imageView)
+        
+        let tap =  UITapGestureRecognizer(target: self, action: #selector(ProfileVC.followAction(_:)))
+        tap.numberOfTapsRequired = 1
+        uivSettingOrFollow.userInteractionEnabled = true
+        uivSettingOrFollow.addGestureRecognizer(tap)
+    }
+    
+    func setupTabSetting() {
+        uivSettingOrFollow.layer.cornerRadius = 3.0
+//        uivSettingOrFollow.layer.borderWidth = 2.0
+//        uivSettingOrFollow.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
+        let bounds = uivSettingOrFollow.bounds
+        let label = UILabel(frame: bounds)
+        label.textAlignment = NSTextAlignment.Center
+        label.text = "Cài đặt"
+        label.textColor = UIColor.whiteColor()
+        
+        let image = UIImage(named: "setting")
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRectMake(5.0, 5.0, 25, 25)
+        
+        uivSettingOrFollow.addSubview(label)
+        uivSettingOrFollow.addSubview(imageView)
+        
+        let tap =  UITapGestureRecognizer(target: self, action: #selector(ProfileVC.showSettingVC(_:)))
+        tap.numberOfTapsRequired = 1
+        uivSettingOrFollow.userInteractionEnabled = true
+        uivSettingOrFollow.addGestureRecognizer(tap)
+    }
+    
+    func followAction(sender: UITapGestureRecognizer) {
+        print("follow tap")
+    }
+    
+    func showSettingVC(sender: UITapGestureRecognizer) {
+        if let settingVC = storyboard!.instantiateViewControllerWithIdentifier("SettingVC") as? SettingVC {
+            self.navigationController?.showViewController(settingVC, sender: nil)
+        }
     }
     
     override func getPostFromAlamofire(url: String) {
         if userId == nil {
             userId = USER_ID
-        } else {
+        }
+        
+        if userName != nil {
             user = Friend(name: userName, id: userId, avatarUrl: userAvatar, message: "")
             configureInfoUser()
         }
+        
         let url = URL_USER_GET_POST(userId)
         print("url \(url)")
         getPostFromUrl(url, isLikePost: false)
@@ -98,8 +164,15 @@ class ProfileVC: ViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(ProfileVC.tappedViewFollow(_:)))
         tap.numberOfTapsRequired = 1
+        lblCountFollowers.tag = 1
         lblCountFollowers.userInteractionEnabled = true
         lblCountFollowers.addGestureRecognizer(tap)
+        
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(ProfileVC.tappedViewFollow(_:)))
+        tap2.numberOfTapsRequired = 1
+        lblCountFollowing.tag = 2
+        lblCountFollowing.userInteractionEnabled = true
+        lblCountFollowing.addGestureRecognizer(tap2)
     }
     
     func configureDataPost(data: [Post]) {
@@ -118,7 +191,7 @@ class ProfileVC: ViewController {
         }
         
         if user.arrayFollowing != nil {
-            lblCountFollowing.text = "\(user.arrayFollowing!.count) Followers"
+            lblCountFollowing.text = "\(user.arrayFollowing!.count) Following"
         }
     }
     
@@ -138,17 +211,15 @@ class ProfileVC: ViewController {
     
     func tappedViewFollow(sender: UITapGestureRecognizer) {
         
-        let data = "1"
-        self.performSegueWithIdentifier("ViewFollowVC", sender: data)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ViewFollowVC" {
-            if let viewFollowVc = segue.destinationViewController as? ViewFollowVC {
-                if let data = sender as? String {
-                    viewFollowVc.userId = data
-                }
+        if let viewFollowVC = storyboard!.instantiateViewControllerWithIdentifier("ViewFollowVC") as? ViewFollowVC {
+            viewFollowVC.userId = userId
+            if sender.view?.tag == 1 {
+                viewFollowVC.isFollowerTab = true
+            } else {
+                viewFollowVC.isFollowerTab = false
             }
+            
+            self.navigationController?.showViewController(viewFollowVC, sender: nil)
         }
     }
     

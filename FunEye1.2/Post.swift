@@ -173,6 +173,8 @@ class Post: NSObject, NSCoding {
             
             if let userAvatar = arrayUser["avatar"] as? String {
                 self._userAvatar = userAvatar
+            } else {
+                self._userAvatar = URL_AVATAR_NIL
             }
             
         }

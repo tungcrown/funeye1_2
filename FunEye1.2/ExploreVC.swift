@@ -12,6 +12,7 @@ import Alamofire
 class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tabeviewCategories: UITableView!
+    @IBOutlet weak var uivTrending: UIView!
     
     var topics = [Dictionary<String, AnyObject?>]()
     
@@ -31,6 +32,7 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         indicator.startAnimating()
         
         loadCotegory()
+        loadTrending()
     }
     
     func loadCotegory() {
@@ -55,6 +57,64 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     print("Load topic follow \(response)")
                 }
             }
+        }
+    }
+    
+    func loadTrending() {
+        Alamofire.request(.GET, URL_GET_TRENDING).responseJSON { response in
+            if response.result.error != nil {
+                print("error load follow \(response.result.error)")
+            } else {
+                if let res = response.result.value as? Dictionary<String, AnyObject> {
+                    if let jsons = res["data"] as? [Dictionary<String, AnyObject>] {
+                        for (index, json) in jsons.enumerate() {
+                            let width = self.view.frame.size.width / 2 - 8 - 2
+                            var frame: CGRect
+                            var x: CGFloat
+                            var y: CGFloat!
+                            
+                            let check = index % 2
+                            if check == 0 {
+                                y = CGFloat(index * 25 / 2 + index * 4 / 2)
+                                x = 0
+                            } else {
+                                y = CGFloat((index - 1) * 25 / 2 + (index - 1) * 4 / 2)
+                                x = width + 4
+                            }
+                            
+                            frame = CGRectMake(x, y, width, 25.0)
+                            let btnTrend = UIButton(frame: frame)
+                            if let trend = json["_id"] as? String {
+                                btnTrend.setTitle(trend, forState: .Normal)
+                            } else {
+                                continue
+                            }
+                            
+                            btnTrend.setTitleColor(UIColor.darkTextColor(), forState: .Normal)
+                            btnTrend.titleLabel!.font =  UIFont(name: "HelveticaNeue-Thin", size: 14)
+                            btnTrend.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
+                            btnTrend.layer.cornerRadius = 3.0
+                            
+                            btnTrend.addTarget(self, action: #selector(self.btnChooseTrend(_:)), forControlEvents: .TouchUpInside)
+                            
+                            self.uivTrending.addSubview(btnTrend)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func btnChooseTrend(sender: UIButton) {
+        print("tap bt")
+        
+        let data = sender.titleForState(.Normal)
+        if let showExploreVC = storyboard!.instantiateViewControllerWithIdentifier("ShowExploreVC") as? ShowExploreVC {
+            showExploreVC.type = "hashtag"
+            showExploreVC.data = data
+            showExploreVC.cateName = data
+            
+            self.navigationController?.showViewController(showExploreVC, sender: nil)
         }
     }
     
@@ -118,6 +178,7 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "ShowExploreVC" {
             if let showExploreVC = segue.destinationViewController as? ShowExploreVC {
                 if let dataSender = sender as? Int {
+                    showExploreVC.type = "category"
                     if let cateId = topics[dataSender]["_id"] as? Int {
                         showExploreVC.data = "\(cateId)"
                     }

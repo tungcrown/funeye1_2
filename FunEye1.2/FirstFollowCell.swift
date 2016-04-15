@@ -30,5 +30,13 @@ class FirstFollowCell: UITableViewCell {
         lblUserFriendName.text = friend.name
         lblSourceFriends.text = friend.message
         DataService.instance.downloadAndSetImageFromUrl(friend.avatarUrl, imgView: imgAvtUsers, imageCache: FirstFollowVC.imageCache)
+        
+        if friend.isFollowing == true {
+            let img = UIImage(named: "follow-active")
+            btnFollowFriends.setImage(img, forState: .Normal)
+        } else {
+            let img = UIImage(named: "follow-not")
+            btnFollowFriends.setImage(img, forState: .Normal)
+        }
     }
 }

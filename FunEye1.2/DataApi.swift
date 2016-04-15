@@ -26,8 +26,26 @@ let URL_GET_NEW_FEED = URL_MAIN_DOMAIN + "/api/feed?page=1&access_token=\(ACCESS
 let URL_GET_FRIEND_FOLLOW = URL_MAIN_DOMAIN + "/api/suggestfriends?access_token=\(ACCESS_TOKEN)"
 let URL_GET_CATEGORIES = URL_MAIN_DOMAIN + "/api/categoryInfo?access_token=\(ACCESS_TOKEN)"
 let URL_AVATAR_NIL = URL_MAIN_DOMAIN + "/img/logo-white.png"
+let URL_GET_TRENDING = URL_MAIN_DOMAIN + "/api/hashtag?page=1&access_token=\(ACCESS_TOKEN)"
 
 let URL_PUT_READ_NOTIFICATION = URL_MAIN_DOMAIN + "/api/notification?access_token=\(ACCESS_TOKEN)"
+
+func URL_GET_POST_HASHTAG(data: String, page: Int) -> String {
+    return URL_MAIN_DOMAIN + "/api/search/hashtag?text=\(data)&page=\(page)&access_token=\(ACCESS_TOKEN)"
+}
+
+func URL_SUGGEST_FRIENDS_FROM_FUNNERS(page: Int) -> String {
+    return URL_MAIN_DOMAIN + "/api/suggestfunner?page=\(page)&access_token=\(ACCESS_TOKEN)"
+}
+
+func URL_GET_FOLLOWERS(userId: String) -> String {
+    return URL_MAIN_DOMAIN + "/api/follower/\(userId)?access_token=\(ACCESS_TOKEN)"
+}
+
+func URL_GET_FOLLOWING(userId: String) -> String {
+    return URL_MAIN_DOMAIN + "/api/following/\(userId)?access_token=\(ACCESS_TOKEN)"
+}
+
 
 let URL_POST_VIDEO = URL_MAIN_DOMAIN + "/api/articles?access_token=\(ACCESS_TOKEN)"
 

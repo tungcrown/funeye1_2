@@ -15,6 +15,7 @@ class Friend {
     
     private var _arrayFollower: [String]?
     private var _arrayFollowing: [String]?
+    private var _isFollowing: Bool = false
     
     var name: String {
         return _name
@@ -26,6 +27,15 @@ class Friend {
     
     var arrayFollowing: [String]? {
         return _arrayFollowing
+    }
+    
+    var isFollowing: Bool {
+        get {
+            return _isFollowing
+        }
+        set {
+            self._isFollowing = newValue
+        }
     }
     
     var username: String {
@@ -70,12 +80,19 @@ class Friend {
             self._avatarUrl = URL_AVATAR_NIL
         }
         
+        self._message = ""
+        
         if let arFollower = dictionary["follower"] as? [Int] {
             self._arrayFollower = arFollower.map(
                 {
                     (number: Int) -> String in
                     return String(number)
             })
+            if arFollower.count > 0 {
+                if arFollower.contains(Int(USER_ID)!){
+                    self._isFollowing = true
+                }
+            }
         } else {
             self._arrayFollower = nil
         }

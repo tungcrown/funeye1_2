@@ -27,6 +27,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var uiviewVideo: UIView!
     
     @IBOutlet weak var lblCaptionVideo: UILabel!
+    @IBOutlet weak var CaptionVideofield: UITextView!
     
     @IBOutlet weak var imgCommentButton: UIButton!
     @IBOutlet weak var btnLike: UIButton!
@@ -50,7 +51,10 @@ class PostCell: UITableViewCell {
     }
     
     func configureCell(post: Post, indexPath: Int!) {
-        lblCaptionVideo.text = post.caption
+        let str = post.caption
+        //CaptionVideofield.text = post.caption
+        CaptionVideofield.attributedText = setAttrWithName("Hashtag", wordPrefix: "#", color: UIColor.brownColor(), text: str)
+        
         lblUserName.text = post.userName
         lblTimeCreate.text = timeAgoSinceDateString(post.timeCreate)
         lblCoutViews.text = "\(post.views)"
@@ -66,5 +70,19 @@ class PostCell: UITableViewCell {
         } else {
             btnLike.setImage(UIImage(named: "love"), forState: .Normal)
         }
+    }
+    
+    func setAttrWithName(attrName: String, wordPrefix: String, color: UIColor, text: String) -> NSAttributedString {
+        let words = text.componentsSeparatedByString(" ")
+        let attrString = NSMutableAttributedString(string: text)
+        let textString = NSString(string: text)
+        
+        for word in words.filter({$0.hasPrefix(wordPrefix)}) {
+            let range = textString.rangeOfString(word)
+            attrString.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
+            let singleAttribute = [attrName: word]
+            attrString.addAttributes(singleAttribute, range: range)
+        }
+        return attrString
     }
 }

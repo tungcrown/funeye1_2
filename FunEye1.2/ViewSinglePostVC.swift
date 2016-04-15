@@ -40,19 +40,30 @@ class ViewSinglePostVC: ViewController {
     var cateName: String!
     
     override func getPostFromAlamofire(url: String) {
-        let url = URL_GET_SINGLE_POST(postId)
-        let nsUrl = NSURL(string: url)!
-        Alamofire.request(.GET, nsUrl).responseJSON { response in
-            if let res = response.result.value as? Dictionary<String, AnyObject> {
-                self.indicator.stopAnimating()
-                self.posts = [Post]()
-                let post = Post(dictionary: res)
-                DataService.instance.addPost(post)
-                self.posts.insert(post, atIndex: 0)
-                self.tableView.reloadData()
-            } else {
-                print(response)
+        if postId != nil {
+            let url = URL_GET_SINGLE_POST(postId)
+            let nsUrl = NSURL(string: url)!
+            Alamofire.request(.GET, nsUrl).responseJSON { response in
+                if let res = response.result.value as? Dictionary<String, AnyObject> {
+                    self.indicator.stopAnimating()
+                    self.posts = [Post]()
+                    let post = Post(dictionary: res)
+                    DataService.instance.addPost(post)
+                    self.posts.insert(post, atIndex: 0)
+                    self.tableView.reloadData()
+                } else {
+                    print(response)
+                }
             }
+        } else {
+            indicator.stopAnimating()
+            
+            let alert = UIAlertController(title: "Có lỗi mất rồi :(", message: "Bài đăng đã bị xóa hoặc không tồn tại!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
+                self.navigationController?.popViewControllerAnimated(true)
+            }))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
 }

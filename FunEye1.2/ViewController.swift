@@ -15,8 +15,6 @@ import SocketIOClientSwift
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var uivTabar: UIView!
-    
     
     var refreshControl: UIRefreshControl!
     let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
@@ -51,6 +49,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         setupSocketIO()
         setupRefreshControl()
     
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func setHeightCell() -> CGFloat {
@@ -203,6 +206,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.btnViewProfile.addTarget(self, action: #selector(ViewController.viewProfileUser(_:)), forControlEvents: .TouchUpInside)
             */
             
+            let tapHastag = UITapGestureRecognizer(target: self, action: #selector(ViewController.myMethodToHandleTap(_:)))
+            tapHastag.numberOfTapsRequired = 1
+            cell.CaptionVideofield.addGestureRecognizer(tapHastag)
+            
             cell.configureCell(post, indexPath: indexPath.row)
             
             cell.lblUserName.tag = indexPath.row
@@ -236,6 +243,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var checkTimerLoadVideo = true;
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if velocity.y >= 0 {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+        
         if checkTimerLoadVideo {
             checkTimerLoadVideo = false
             timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: false)
@@ -453,6 +466,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             profileVC.userName = user.userName
             
             self.navigationController?.showViewController(profileVC, sender: nil)
+        }
+    }
+    
+    func myMethodToHandleTap(sender: UITapGestureRecognizer) {
+        let myTextView = sender.view as! UITextView
+        let layoutManager = myTextView.layoutManager
+        
+        var location = sender.locationInView(myTextView)
+        location.x -= myTextView.textContainerInset.left;
+        location.y -= myTextView.textContainerInset.top;
+        
+        let characterIndex = layoutManager.characterIndexForPoint(location, inTextContainer: myTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        
+        if characterIndex < myTextView.textStorage.length {
+            
+            let attributeName = "Hashtag"
+            let attributeValue = myTextView.attributedText.attribute(attributeName, atIndex: characterIndex, effectiveRange: nil) as? String
+            if let value = attributeValue {
+                print("You tapped on \(attributeName) and the value is: \(value)")
+                let dataPass = value
+                
+                if let showExploreVC = storyboard!.instantiateViewControllerWithIdentifier("ShowExploreVC") as? ShowExploreVC {
+                    showExploreVC.type = "hashtag"
+                    showExploreVC.data = dataPass
+                    showExploreVC.cateName = dataPass
+                    
+                    self.navigationController?.showViewController(showExploreVC, sender: nil)
+                }
+            }
+            
         }
     }
 }

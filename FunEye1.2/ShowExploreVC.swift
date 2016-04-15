@@ -16,20 +16,30 @@ class ShowExploreVC: ViewController {
     
     var data: String!
     var cateName: String!
+    var type: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = UIImage(named: "category_\(data)")! as UIImage
-        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.setBackgroundImage(image,
+        if type == "category" {
+            let image = UIImage(named: "category_\(data)")! as UIImage
+            self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+            self.navigationController?.navigationBar.setBackgroundImage(image,
                                 forBarMetrics: .Default)
+        }
         self.title = cateName
         //self.navigationController?.title = cateName
     }
     
     override func getPostFromAlamofire(url: String) {
-        let url = URL_GET_CATEGORY_POST(data)
+        let url: String!
+        if type == "category" {
+            url = URL_GET_CATEGORY_POST(data)
+        } else {
+            let hashtag = String(data.characters.dropFirst())
+            url = URL_GET_POST_HASHTAG(hashtag, page: 1)
+        }
+        
         print("url load data category \(url)")
         let nsUrl = NSURL(string: url)!
         

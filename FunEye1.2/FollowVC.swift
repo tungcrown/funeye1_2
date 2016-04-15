@@ -10,22 +10,112 @@ import UIKit
 import AddressBook
 import Contacts
 import MessageUI
+import Alamofire
 
 class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var followTable: UITableView!
     
     var friends = [Friend]()
+    var friendsContacts = [Friend]()
+    var friendsFunner = [Friend]()
+    var friendsFacebook = [Friend]()
     
     let authorizationStatus = CNContactStore.authorizationStatusForEntityType(.Contacts)
     let contacts: CNContactStore = CNContactStore()
+    
+    var refreshControl: UIRefreshControl!
+    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    
+    var nextPage = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         
         followTable.delegate = self
         followTable.dataSource = self
         
+        suggestFriendFromFunners(nextPage)
         
+        setupRefreshControl()
+    }
+    
+    func setupRefreshControl() {
+        indicator.center = view.center
+        view.addSubview(indicator)
+        indicator.startAnimating()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Load new post")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        followTable.addSubview(self.refreshControl)
+    }
+    
+    func refresh(sender:AnyObject) {
+        print("load new data refresh")
+        self.refreshControl.endRefreshing()
+    }
+    
+    func suggestFriendFromFunners(nextPage: Int) {
+        let url = URL_SUGGEST_FRIENDS_FROM_FUNNERS(nextPage)
+        print("url \(url)")
+        Alamofire.request(.GET, url).responseJSON { response in
+            print("res \(response)")
+            if let res = response.result.value as? Dictionary<String, AnyObject> {
+                if let jsons = res["data"] as? [Dictionary<String, AnyObject>] {
+                    for json in jsons {
+                        let friend = Friend(dictionary: json)
+                        self.friendsFunner.append(friend)
+                        self.friends = self.friendsFunner
+                    }
+                    
+                    self.followTable.reloadData()
+                }
+                
+                if let isNext = res["isNext"] as? Bool where isNext == true {
+                    self.nextPage += 1
+                    self.refreshControl.endRefreshing()
+                } else {
+                    self.refreshControl.endRefreshing()
+                    self.refreshControl.removeFromSuperview()
+                    
+                }
+                
+                self.indicator.stopAnimating()
+            }
+        }
+    }
+    
+    func suggestFriendFromFacebook() {
+        let url = URL_GET_FRIEND_FOLLOW
+        print("url \(url)")
+        Alamofire.request(.GET, url).responseJSON { response in
+            print("res \(response)")
+            if let res = response.result.value as? Dictionary<String, AnyObject> {
+                if let jsons = res["data"] as? [Dictionary<String, AnyObject>] {
+                    for json in jsons {
+                        let friend = Friend(dictionary: json)
+                        self.friendsFacebook.append(friend)
+                        self.friends = self.friendsFacebook
+                    }
+                    
+                    self.followTable.reloadData()
+                }
+                
+                if let isNext = res["isNext"] as? Bool where isNext == true {
+                    self.nextPage += 1
+                    self.refreshControl.endRefreshing()
+                } else {
+                    self.refreshControl.endRefreshing()
+                    self.refreshControl.removeFromSuperview()
+                    
+                }
+                
+                self.indicator.stopAnimating()
+            }
+        }
+    }
+    
+    func suggestFriendFromContacts() {
         checkAuthorizationContacts()
     }
     
@@ -44,12 +134,45 @@ class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier("FollowCell") as? FollowCell {
             let friend = friends[indexPath.row]
-            cell.configureCell(friend)
             
+            cell.btnFollowFriends.tag = indexPath.row
+            cell.btnFollowFriends.addTarget(self, action: #selector(self.followFriendsACTION(_:)), forControlEvents: .TouchUpInside)
+            
+            cell.configureCell(friend)
             return cell
         } else {
             return FollowCell()
         }
+    }
+    
+    func followFriendsACTION(sender: UIButton) {
+        /*
+        let btnTag = sender.tag
+        let friendId = friends[btnTag].id
+        print("friends id \(friendId)")
+        sender.setTitle("...", forState: .Normal)
+        let indexPath = NSIndexPath(forRow: btnTag, inSection: 0) //NSIndexPath(index: btnTag)
+        
+        if let cell = followTable.cellForRowAtIndexPath(indexPath) {
+            UIView.animateWithDuration(0.5, animations: {
+                cell.alpha = 0.0
+            }) { (true) in
+                
+                Alamofire.request(.PUT, URL_PUT_FOLLOW_FRIEND(friendId, isFollow: true))
+                self.friends.removeAtIndex(btnTag)
+                self.followTable.reloadData()
+            }
+        } else {
+            print("error")
+        }
+        */
+        let tag = sender.tag
+        let friendId = friends[tag].id
+        let isFollowing = !friends[tag].isFollowing
+        
+        Alamofire.request(.PUT, URL_PUT_FOLLOW_FRIEND(friendId, isFollow: isFollowing))
+        friends[tag].isFollowing = isFollowing
+        followTable.reloadData()
     }
     
     func checkAuthorizationContacts() {
@@ -91,14 +214,16 @@ class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITabl
                 var phoneNumber: String = ""
                 for phone in contact.phoneNumbers {
                     if phone.label == CNLabelPhoneNumberMobile {
-                        phoneNumber = (phone.value as! CNPhoneNumber).stringValue
-                        print("phoneNumber \(phoneNumber)")
+                        let newPhone = (phone.value as! CNPhoneNumber).stringValue
+                        phoneNumber = self.removeSpecialCharsFromString(newPhone)
+                        print("phoneNumber222 \(phoneNumber)")
                         break
                     }
                 }
                 let name = contact.givenName + contact.familyName
                 let friend = Friend(name: name, id: phoneNumber, avatarUrl: nil, message: "contacts")
-                self.friends.append(friend)
+                self.friendsContacts.append(friend)
+                self.friends = self.friendsContacts
                 self.followTable.reloadData()
             }
         } catch let err{
@@ -106,14 +231,15 @@ class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITabl
         }
     }
     
+    func removeSpecialCharsFromString(text: String) -> String {
+        let okayChars : Set<Character> =
+            Set("0123456789".characters)
+        return String(text.characters.filter {okayChars.contains($0) })
+    }
+    
     func openSettings() {
         let url = NSURL(string: UIApplicationOpenSettingsURLString)
         UIApplication.sharedApplication().openURL(url!)
-    }
-    
-    
-    @IBAction func btnBackToNewfeedsVC(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func btnInviteFriendsViaSMS(sender: UIButton) {
@@ -164,4 +290,31 @@ class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITabl
         controller.dismissViewControllerAnimated(true, completion: nil)
         
     }
+    
+    @IBAction func sgmChangeValue(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            if friendsFunner.count == 0 {
+                suggestFriendFromFunners(nextPage)
+            } else {
+                friends = friendsFunner
+                followTable.reloadData()
+            }
+            
+        } else if sender.selectedSegmentIndex == 1 {
+            if friendsFacebook.count == 0 {
+                suggestFriendFromFacebook()
+            } else {
+                friends = friendsFacebook
+                followTable.reloadData()
+            }
+        } else if sender.selectedSegmentIndex == 2 {
+            if friendsContacts.count == 0 {
+                suggestFriendFromContacts()
+            } else {
+                friends = friendsContacts
+                followTable.reloadData()
+            }
+        }
+    }
+    
 }

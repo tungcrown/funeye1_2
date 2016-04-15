@@ -66,7 +66,7 @@ class FirstFollowVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     if let jsons = res["data"] as? [Dictionary<String, AnyObject>] {
                         for json in jsons {
                             if let id = json["_id"] as? Int {
-                                let topic = ["_id": json["_id"], "image" : "https://graph.facebook.com/246809342331820/picture", "name": json["name"], "backgroundColor": json["color"]]
+                                let topic = ["_id": id, "image" : "https://graph.facebook.com/246809342331820/picture", "name": json["name"], "backgroundColor": json["color"]]
                                 self.topics.append(topic)
                             }
                         }

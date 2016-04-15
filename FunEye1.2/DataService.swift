@@ -61,7 +61,8 @@ class DataService {
                     /*if self._loadingPost.count > 3 {
                         self._loadingPost.removeLast()
                     }*/
-                    self._loadingPost.insert(post, atIndex:0)
+                    //self._loadingPost.insert(post, atIndex:0)
+                    self._loadingPost.append(post)
                     
                     
                     let postsData = NSKeyedArchiver.archivedDataWithRootObject(self._loadingPost)
