@@ -30,6 +30,10 @@ let URL_GET_TRENDING = URL_MAIN_DOMAIN + "/api/hashtag?page=1&access_token=\(ACC
 
 let URL_PUT_READ_NOTIFICATION = URL_MAIN_DOMAIN + "/api/notification?access_token=\(ACCESS_TOKEN)"
 
+func URL_SEARCH(type: String, text: String, page: Int) -> String {
+    return URL_MAIN_DOMAIN + "/api/search/\(type)?text=\(text)&page=\(page)&access_token=\(ACCESS_TOKEN)"
+}
+
 func URL_GET_POST_HASHTAG(data: String, page: Int) -> String {
     return URL_MAIN_DOMAIN + "/api/search/hashtag?text=\(data)&page=\(page)&access_token=\(ACCESS_TOKEN)"
 }

@@ -35,8 +35,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -85,6 +83,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         pauseAllVideo()
     }
     

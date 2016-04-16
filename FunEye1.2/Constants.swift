@@ -15,6 +15,8 @@ let PATH_SAVE_MUSIC = "music_save"
 let PATH_SAVE_VIDEO = "video_save"
 let PATH_SAVE_RCORDING_VIDEO = "recording_video_save"
 
+let COLOR_FUNEYE: UIColor = UIColor(red: 100/255, green: 53/255, blue: 201/255, alpha: 1.0)
+
 var PLAYER_NOW = AVPlayer()
 
 func createTempPath(typePath: String) -> NSURL {

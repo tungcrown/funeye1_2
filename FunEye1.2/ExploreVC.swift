@@ -9,12 +9,23 @@
 import UIKit
 import Alamofire
 
-class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    @IBOutlet weak var tabeviewCategories: UITableView!
+    @IBOutlet weak var tableviewCategories: UITableView!
+    @IBOutlet weak var tableviewSearch: UITableView!
+    
     @IBOutlet weak var uivTrending: UIView!
+    @IBOutlet weak var uivContainerSearchResult: UIView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var topics = [Dictionary<String, AnyObject?>]()
+    var searchDataPeople = [Friend]()
+    var searchDataPosts = [Post]()
+    var searchDataHashtag = [Dictionary<String, String>]()
+    
+    let typeSearch: [String] = ["article", "user", "hashtag"]
+    var indexSearch: Int = 0
     
     var refreshControl: UIRefreshControl!
     let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
@@ -22,8 +33,14 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabeviewCategories.delegate = self
-        tabeviewCategories.dataSource = self
+        tableviewCategories.delegate = self
+        tableviewCategories.dataSource = self
+        
+        tableviewSearch.delegate = self
+        tableviewSearch.dataSource = self
+        
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.Done
         
         setupRefreshControl()
         
@@ -33,6 +50,16 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         loadCotegory()
         loadTrending()
+        
+        let hashtag1 = ["name": "#hot", "count": "3"]
+        searchDataHashtag.append(hashtag1)
+        let hashtag2 = ["name": "#dau", "count": "5"]
+        searchDataHashtag.append(hashtag2)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func loadCotegory() {
@@ -50,7 +77,7 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             }
                         }
                         self.indicator.stopAnimating()
-                        self.tabeviewCategories.reloadData()
+                        self.tableviewCategories.reloadData()
                         self.refreshControl.endRefreshing()
                     }
                 } else {
@@ -106,8 +133,7 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func btnChooseTrend(sender: UIButton) {
-        print("tap bt")
-        
+
         let data = sender.titleForState(.Normal)
         if let showExploreVC = storyboard!.instantiateViewControllerWithIdentifier("ShowExploreVC") as? ShowExploreVC {
             showExploreVC.type = "hashtag"
@@ -122,7 +148,7 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Load new post")
         refreshControl.addTarget(self, action: #selector(ViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        tabeviewCategories.addSubview(self.refreshControl)
+        tableviewCategories.addSubview(self.refreshControl)
     }
     
     func refresh(sender:AnyObject)
@@ -135,7 +161,19 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topics.count
+        if tableView == tableviewCategories {
+            return topics.count
+        } else {
+            if indexSearch == 0 {
+                return searchDataPosts.count
+            } else if indexSearch == 1 {
+                return searchDataPeople.count
+            } else if indexSearch == 2 {
+                return searchDataHashtag.count
+            } else {
+                return searchDataPeople.count
+            }
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -148,6 +186,37 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             return cell
         
+        } else if let cell = tableView.dequeueReusableCellWithIdentifier("ShowSearchCell") as? ShowSearchCell {
+            if indexSearch == 0 {
+                let post = searchDataPosts[indexPath.row]
+                print(post)
+                cell.imgVideoThumb.tag = indexPath.row
+                cell.imgVideoThumb.userInteractionEnabled = true
+                
+                let tapVideoThumb = UITapGestureRecognizer(target: self, action: #selector(ExploreVC.tappedVideoThumb(_:)))
+                tapVideoThumb.numberOfTapsRequired = 1
+                cell.imgVideoThumb.addGestureRecognizer(tapVideoThumb)
+                
+                let tapUsername = UITapGestureRecognizer(target: self, action: #selector(ExploreVC.myMethodToHandleTap(_:)))
+                tapUsername.numberOfTapsRequired = 1
+                cell.textViewData.addGestureRecognizer(tapUsername)
+                
+                cell.configureCellPost(post)
+            } else if indexSearch == 1 {
+                let friend = searchDataPeople[indexPath.row]
+                
+                let tapUsername = UITapGestureRecognizer(target: self, action: #selector(ExploreVC.myMethodToHandleTap(_:)))
+                tapUsername.numberOfTapsRequired = 1
+                cell.textViewData.addGestureRecognizer(tapUsername)
+                
+                cell.configureCellUser(friend)
+            } else if indexSearch == 2 {
+                let hashtag = searchDataHashtag[indexPath.row]
+                print("hashtag \(hashtag)")
+                cell.configureCellHashtag(hashtag["name"]!, count: hashtag["count"]!)
+            }
+        
+            return cell
         } else {
             return ExploreCell()
         }
@@ -185,6 +254,135 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     if let name = topics[dataSender]["name"] as? String {
                         showExploreVC.cateName = name
                     }
+                }
+            }
+        }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+        print("search button click")
+        let lower = searchBar.text!.lowercaseString
+        getDataSearch(lower, page: 1)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+        uivContainerSearchResult.hidden = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.barTintColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.darkTextColor()
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        uivContainerSearchResult.hidden = false
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchBar.barTintColor = COLOR_FUNEYE
+        self.searchBar.tintColor = UIColor.whiteColor()
+        
+        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
+        
+        let buttonInsideSearchBar = searchBar.valueForKey("cancelButton") as? UIButton
+        buttonInsideSearchBar?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        
+        self.view.backgroundColor = COLOR_FUNEYE
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            print("search nil")
+        } else {
+            let lower = searchBar.text!.lowercaseString
+            //getDataSearch(lower, page: 1)
+        }
+    }
+    
+    func getDataSearch(text: String, page: Int) {
+        indicator.startAnimating()
+        let type = typeSearch[indexSearch]
+        let url = URL_SEARCH(type, text: text, page: page)
+        print("url search \(url)")
+        Alamofire.request(.GET, url).responseJSON { response in
+            if response.result.error != nil {
+                print("error load follow \(response.result.error)")
+            } else {
+                if let res = response.result.value as? Dictionary<String, AnyObject> {
+                    if let jsons = res["data"] as? [Dictionary<String, AnyObject>] {
+                        
+                        print("jsons.count \(jsons.count)")
+                        if jsons.count == 0 {
+                            print("data search empty")
+                        } else {
+                            self.searchDataPosts = []
+                            self.searchDataPeople = []
+                            for json in jsons {
+                                //print(json)
+                                if self.indexSearch == 0 {
+                                    let post = Post(dictionary: json)
+                                    print(post.caption)
+                                    self.searchDataPosts.append(post)
+                                } else if self.indexSearch == 1 {
+                                    let friend = Friend(dictionary: json)
+                                    self.searchDataPeople.append(friend)
+                                }
+                            }
+                        }
+                        self.indicator.stopAnimating()
+                        self.tableviewSearch.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func sgmChangeValue(sender: UISegmentedControl) {
+        indexSearch = sender.selectedSegmentIndex
+        if searchBar.text == nil || searchBar.text == "" {
+            print("search nil 2")
+        } else {
+            let text = searchBar.text!.lowercaseString
+            getDataSearch(text, page: 1)
+        }
+    }
+    
+    func tappedVideoThumb(sender: UITapGestureRecognizer) {
+        let tag = sender.view?.tag
+        let postId = searchDataPosts[tag!].postId
+        if let viewSinglePostVC = storyboard!.instantiateViewControllerWithIdentifier("ViewSinglePostVC") as? ViewSinglePostVC {
+            viewSinglePostVC.postId = postId
+            viewSinglePostVC.isViewNextComment = false
+            
+            self.navigationController?.showViewController(viewSinglePostVC, sender: nil)
+        }
+    }
+    
+    func myMethodToHandleTap(sender: UITapGestureRecognizer) {
+        let myTextView = sender.view as! UITextView
+        let layoutManager = myTextView.layoutManager
+        
+        var location = sender.locationInView(myTextView)
+        location.x -= myTextView.textContainerInset.left;
+        location.y -= myTextView.textContainerInset.top;
+        
+        let characterIndex = layoutManager.characterIndexForPoint(location, inTextContainer: myTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        
+        if characterIndex < myTextView.textStorage.length {
+            
+            let attributeName = "username"
+            let attributeValue = myTextView.attributedText.attribute(attributeName, atIndex: characterIndex, effectiveRange: nil) as? String
+            if let value = attributeValue {
+                print("You tapped on \(attributeName) and the value is: \(value)")
+                let dataPass = value
+                if let profileVC = storyboard!.instantiateViewControllerWithIdentifier("ProfileVC") as? ProfileVC {
+                    profileVC.userId = dataPass
+                    self.navigationController?.showViewController(profileVC, sender: nil)
                 }
             }
         }

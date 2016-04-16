@@ -43,12 +43,7 @@ class NotificationCell: UITableViewCell {
                 "MyCustomAttributeName": notiId]
             
             myString.addAttributes(multipleAttributes, range: myRange)
-            
-            
             messageTxt.attributedText = myString
-            /*let tap = UITapGestureRecognizer(target: self, action: #selector(NotificationsVC.myMethodToHandleTap(_:)))
-            //tap.delegate = self
-            messageTxt.addGestureRecognizer(tap)*/
         
         } else {
             print("post nil")
