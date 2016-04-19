@@ -38,7 +38,7 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         commentTableView.rowHeight = UITableViewAutomaticDimension
         
         if post_id != nil {
-            print(post_id)
+            print("post_id commentVC \(post_id)")
         }
         
         indicator.center = view.center
@@ -253,7 +253,7 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         let deleteAction = UIAlertAction(title: "Xóa", style: UIAlertActionStyle.Destructive) { (action) in
-            self.deleteComment(commentId)
+            self.deleteComment(commentId, index: indexPath)
         }
         
         let cancelAction = UIAlertAction(title: "Hủy Bỏ", style: UIAlertActionStyle.Cancel) { (action) in
@@ -272,10 +272,10 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.presentViewController(myActionSheet, animated: true, completion: nil)
     }
     
-    func deleteComment(commentId: String) {
-        print("delete \(URL_DELETE_COMMENT(commentId))")
-        
+    func deleteComment(commentId: String, index: Int) {
         Alamofire.request(.DELETE, URL_DELETE_COMMENT(commentId))
+        comments.removeAtIndex(index)
+        commentTableView.reloadData()
     }
     
     func replyComment(userName: String) {
@@ -286,6 +286,7 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func loadCommentData() {
         let url =  URL_MAIN_DOMAIN + "/api/articles/\(post_id)/comments?page=\(nextCmtPage)&access_token=\(ACCESS_TOKEN)"
+        print("load url comment \(url)")
         Alamofire.request(.GET, url).responseJSON { response in
             if let res = response.result.value as? Dictionary<String, AnyObject> {
                 if let jsons = res["data"] as? [Dictionary<String, AnyObject>] {

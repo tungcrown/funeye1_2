@@ -77,6 +77,10 @@ func URL_GET_CATEGORY_POST(id: String) -> String {
     return URL_MAIN_DOMAIN + "/api/categories/"+id+"?page=1&sort=creared&access_token=\(ACCESS_TOKEN)"
 }
 
+func URL_GET_POST_HOT(id: String, page: Int) -> String {
+    return URL_MAIN_DOMAIN + "/api/articles?page=\(page)&sort=\(id)&access_token=\(ACCESS_TOKEN)"
+}
+
 func URL_GET_COMMENT_POST(post_id: String) -> String{
     return URL_MAIN_DOMAIN + "/api/articles/\(post_id)/comments?access_token=\(ACCESS_TOKEN)"
 }

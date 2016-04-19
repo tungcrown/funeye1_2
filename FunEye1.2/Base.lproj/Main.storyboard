@@ -36,7 +36,7 @@
                                                     </imageView>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwM-qZ-wZS">
                                                         <rect key="frame" x="36" y="7" width="476" height="30"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                     </textField>
@@ -50,7 +50,7 @@
                                                     </imageView>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPT-tC-KpQ">
                                                         <rect key="frame" x="36" y="7" width="476" height="30"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     </textField>
@@ -64,7 +64,7 @@
                                                     </imageView>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TqO-Ng-84A">
                                                         <rect key="frame" x="36" y="7" width="476" height="30"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                     </textField>
@@ -121,7 +121,7 @@
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fzv-SS-YfY">
                                                                 <rect key="frame" x="36" y="7" width="476" height="30"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                             </textField>
@@ -135,7 +135,7 @@
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02B-fk-hMq">
                                                                 <rect key="frame" x="36" y="7" width="476" height="30"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                             </textField>
@@ -184,7 +184,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chưa có tài khoản?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIZ-AN-6Tp">
                                                         <rect key="frame" x="0.0" y="0.0" width="133" height="25"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBX-oM-s5Z">
@@ -208,7 +208,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Quên mật khẩu?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRM-JR-H2t">
                                                         <rect key="frame" x="0.0" y="0.0" width="112" height="25"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWv-at-l3j">
@@ -371,7 +371,7 @@
                                                                 <constraint firstAttribute="width" constant="218" id="O4C-Tc-TjR"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ban tren Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="As3-X4-FqH">
@@ -597,7 +597,7 @@
                                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tùng Crown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Nml-lH-7vm">
                                                                             <rect key="frame" x="0.0" y="0.0" width="82" height="17"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="teQ-NC-1YH">
@@ -614,7 +614,7 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="JLr-Ol-Qln">
                                                                             <rect key="frame" x="0.0" y="0.0" width="53" height="17"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="lượt xem " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="MJo-ID-5pN">
@@ -716,13 +716,14 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bA0-Jh-EdA">
                                                                     <rect key="frame" x="128" y="0.0" width="40" height="25"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="Tr0-NM-kua">
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3y-WV-U9o">
                                                                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="25" id="JrE-Pi-ca7"/>
-                                                                                <constraint firstAttribute="height" constant="25" id="io0-TG-St1"/>
+                                                                                <constraint firstAttribute="width" constant="25" id="RbU-kw-tWb"/>
+                                                                                <constraint firstAttribute="height" constant="25" id="lXM-AW-vgl"/>
                                                                             </constraints>
-                                                                        </imageView>
+                                                                            <state key="normal" image="share"/>
+                                                                        </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uZH-0s-Z56">
                                                                             <rect key="frame" x="33" y="0.0" width="7" height="25"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
@@ -801,6 +802,7 @@
                                         <connections>
                                             <outlet property="CaptionVideofield" destination="yza-5c-mE3" id="tGy-Dl-9QI"/>
                                             <outlet property="btnLike" destination="10N-Hb-sqS" id="cPl-oI-1iE"/>
+                                            <outlet property="btnShare" destination="J3y-WV-U9o" id="HCg-Nj-e25"/>
                                             <outlet property="imgCommentButton" destination="h4W-On-u4P" id="GXS-Rj-L8R"/>
                                             <outlet property="imgProfileUser" destination="LwU-NS-yRn" id="1Rs-hz-yLZ"/>
                                             <outlet property="imgVideoThumb" destination="GGd-03-BNv" id="zCO-9t-Azt"/>
@@ -997,7 +999,7 @@
                                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tùng Crown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="PgU-1x-jC8">
                                                                             <rect key="frame" x="0.0" y="0.0" width="82" height="17"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="AS0-Y2-SNi">
@@ -1014,7 +1016,7 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="n8d-kO-xaM">
                                                                             <rect key="frame" x="0.0" y="0.0" width="53" height="17"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="lượt xem " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1kg-f5-wqF">
@@ -1116,13 +1118,14 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SBL-IS-wba">
                                                                     <rect key="frame" x="128" y="0.0" width="40" height="25"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="Twk-dK-1F2">
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpX-0q-ex9">
                                                                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="25" id="5gZ-px-rqr"/>
-                                                                                <constraint firstAttribute="height" constant="25" id="7rO-M3-1sL"/>
+                                                                                <constraint firstAttribute="width" constant="25" id="FXo-89-4JU"/>
+                                                                                <constraint firstAttribute="height" constant="25" id="gLY-25-suo"/>
                                                                             </constraints>
-                                                                        </imageView>
+                                                                            <state key="normal" image="share"/>
+                                                                        </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fne-bb-KS5">
                                                                             <rect key="frame" x="33" y="0.0" width="7" height="25"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
@@ -1201,6 +1204,7 @@
                                         <connections>
                                             <outlet property="CaptionVideofield" destination="ReF-f4-Dco" id="ucM-zf-96v"/>
                                             <outlet property="btnLike" destination="HtU-Ny-npU" id="bHt-ip-D9c"/>
+                                            <outlet property="btnShare" destination="HpX-0q-ex9" id="bgx-lt-Yjn"/>
                                             <outlet property="imgCommentButton" destination="sZd-TN-DsV" id="dV1-Uc-v9A"/>
                                             <outlet property="imgProfileUser" destination="N8K-Zw-bqN" id="4xp-cV-Y4O"/>
                                             <outlet property="imgVideoThumb" destination="LGL-3O-eNQ" id="1mV-uQ-XLe"/>
@@ -1268,7 +1272,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tung Crown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oE-b0-Tz8">
                                                             <rect key="frame" x="51" y="16" width="80.5" height="17"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A54-Ae-eEQ">
@@ -1284,7 +1288,7 @@
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSo-gG-Hjn">
                                                             <rect key="frame" x="162" y="14" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1510,7 +1514,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tung Crown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xu7-4q-pur">
                                                             <rect key="frame" x="51" y="16" width="80.5" height="17"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mu-QS-YHm">
@@ -1526,7 +1530,7 @@
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghJ-Y9-8OD">
                                                             <rect key="frame" x="162" y="14" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1653,6 +1657,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78H-L6-nwb">
                                         <rect key="frame" x="255" y="89" width="80" height="80"/>
+                                        <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="sDV-H8-nbR"/>
@@ -1738,7 +1743,7 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="camera" selectedImage="camera-active" id="COq-Gd-tra">
-                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="btnRecording" destination="78H-L6-nwb" id="Rm6-TU-Ctn"/>
@@ -1783,34 +1788,34 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="6LX-bT-i9h">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hbB-It-Rmk">
-                                            <rect key="frame" x="8" y="8" width="584" height="100"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="75"/>
                                             <subviews>
                                                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PM-wG-emr" customClass="MaterialUIViewMenuExplore" customModule="FunEye1_2" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="190" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="190" height="75"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mới Nhất" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlF-Wp-Qpm">
-                                                            <rect key="frame" x="59" y="71" width="70" height="21"/>
+                                                            <rect key="frame" x="59.5" y="46" width="70" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="Lqq-iW-bHi"/>
                                                                 <constraint firstAttribute="width" constant="70" id="bmg-6d-Y9A"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="85c-8D-6M1">
-                                                            <rect key="frame" x="67" y="8" width="55" height="55"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new" translatesAutoresizingMaskIntoConstraints="NO" id="85c-8D-6M1">
+                                                            <rect key="frame" x="79" y="8" width="30" height="30"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="55" id="Q7p-Eb-OXk"/>
-                                                                <constraint firstAttribute="height" constant="55" id="S48-hU-E9b"/>
+                                                                <constraint firstAttribute="width" constant="30" id="Q7p-Eb-OXk"/>
+                                                                <constraint firstAttribute="height" constant="30" id="S48-hU-E9b"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sa-9B-Qt4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="190" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="189.5" height="75"/>
                                                             <connections>
                                                                 <action selector="btnMenuQuickACTION:" destination="GML-Rk-7Ng" eventType="touchUpInside" id="ra9-6z-mSV"/>
                                                             </connections>
@@ -1829,27 +1834,27 @@
                                                     </constraints>
                                                 </view>
                                                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gP4-gF-sRh" customClass="MaterialUIViewMenuExplore" customModule="FunEye1_2" customModuleProvider="target">
-                                                    <rect key="frame" x="198" y="0.0" width="189" height="100"/>
+                                                    <rect key="frame" x="198" y="0.0" width="189" height="75"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đang Hot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot2-xY-wcd">
-                                                            <rect key="frame" x="58" y="71" width="73" height="21"/>
+                                                            <rect key="frame" x="58" y="46" width="73" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="HcF-FO-lTA"/>
                                                                 <constraint firstAttribute="width" constant="73" id="mBU-14-a4z"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="8Ea-lt-aSO">
-                                                            <rect key="frame" x="67" y="8" width="55" height="55"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trend" translatesAutoresizingMaskIntoConstraints="NO" id="8Ea-lt-aSO">
+                                                            <rect key="frame" x="79.5" y="8" width="30" height="30"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="55" id="9BL-dz-aFO"/>
-                                                                <constraint firstAttribute="width" constant="55" id="Sbr-HG-Zb9"/>
+                                                                <constraint firstAttribute="height" constant="30" id="9BL-dz-aFO"/>
+                                                                <constraint firstAttribute="width" constant="30" id="Sbr-HG-Zb9"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k83-ih-3cp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="189" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="189" height="75"/>
                                                             <connections>
                                                                 <action selector="btnMenuQuickACTION:" destination="GML-Rk-7Ng" eventType="touchUpInside" id="UAq-CN-t38"/>
                                                             </connections>
@@ -1868,27 +1873,27 @@
                                                     </constraints>
                                                 </view>
                                                 <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zl5-Ca-y5I" customClass="MaterialUIViewMenuExplore" customModule="FunEye1_2" customModuleProvider="target">
-                                                    <rect key="frame" x="395" y="0.0" width="190" height="100"/>
+                                                    <rect key="frame" x="395" y="0.0" width="190" height="75"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nổi Bật" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohO-xr-5aK">
-                                                            <rect key="frame" x="67" y="71" width="56" height="21"/>
+                                                            <rect key="frame" x="67" y="46" width="56" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="cM9-U6-DuA"/>
                                                                 <constraint firstAttribute="width" constant="56" id="spf-fw-wJl"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="wr1-iP-IpK">
-                                                            <rect key="frame" x="67" y="8" width="55" height="55"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="featured" translatesAutoresizingMaskIntoConstraints="NO" id="wr1-iP-IpK">
+                                                            <rect key="frame" x="79.5" y="8" width="30" height="30"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="55" id="TQm-al-eGj"/>
-                                                                <constraint firstAttribute="height" constant="55" id="nJk-8E-lXn"/>
+                                                                <constraint firstAttribute="width" constant="30" id="TQm-al-eGj"/>
+                                                                <constraint firstAttribute="height" constant="30" id="nJk-8E-lXn"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZy-qg-Dx4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="190" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="189.5" height="75"/>
                                                             <connections>
                                                                 <action selector="btnMenuQuickACTION:" destination="GML-Rk-7Ng" eventType="touchUpInside" id="Dzz-ak-SU5"/>
                                                             </connections>
@@ -1908,11 +1913,11 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="04M-zm-xSx"/>
+                                                <constraint firstAttribute="height" constant="75" id="04M-zm-xSx"/>
                                             </constraints>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chủ Đề" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jej-Py-V1Z">
-                                            <rect key="frame" x="274" y="116" width="51" height="21"/>
+                                            <rect key="frame" x="274" y="91" width="51" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="83P-v5-2bj"/>
                                             </constraints>
@@ -1930,7 +1935,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="VNh-E0-dvm">
-                                    <rect key="frame" x="0.0" y="258" width="600" height="192"/>
+                                    <rect key="frame" x="0.0" y="220" width="600" height="192"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trào lưu trên Funeye" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67X-Wt-rxP">
@@ -1969,7 +1974,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExploreCell" rowHeight="80" id="EeF-5r-B2q" customClass="ExploreCell" customModule="FunEye1_2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="178" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="140" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EeF-5r-B2q" id="Mjd-mr-Ck7">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
@@ -2038,7 +2043,7 @@
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ONG-Gh-3jy">
                                         <rect key="frame" x="0.0" y="44" width="600" height="399"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.10980392156862745" green="0.47843137254901963" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShowSearchCell" rowHeight="60" id="9WL-2Z-yW2" customClass="ShowSearchCell" customModule="FunEye1_2" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="600" height="60"/>
@@ -2059,7 +2064,7 @@
                                                                 </imageView>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium " translatesAutoresizingMaskIntoConstraints="NO" id="ydf-XQ-dK8">
                                                                     <rect key="frame" x="48" y="0.0" width="484" height="43.5"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
@@ -2202,7 +2207,7 @@
                                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tùng Crown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="xoi-Ir-wWS">
                                                                             <rect key="frame" x="0.0" y="0.0" width="82" height="17"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="o6p-O7-mwF">
@@ -2219,7 +2224,7 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="TVB-Fq-fU9">
                                                                             <rect key="frame" x="0.0" y="0.0" width="53" height="17"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="lượt xem " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0CG-ER-dZJ">
@@ -2321,13 +2326,14 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hcY-O4-eRF">
                                                                     <rect key="frame" x="128" y="0.0" width="40" height="25"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="bND-tg-G3l">
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQk-8Z-Ywx">
                                                                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="25" id="Fjm-Lx-36E"/>
-                                                                                <constraint firstAttribute="width" constant="25" id="wwc-VR-kEL"/>
+                                                                                <constraint firstAttribute="width" constant="25" id="0uD-Rb-40C"/>
+                                                                                <constraint firstAttribute="height" constant="25" id="4sI-TA-YR7"/>
                                                                             </constraints>
-                                                                        </imageView>
+                                                                            <state key="normal" image="share"/>
+                                                                        </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="HeJ-4F-Oyb">
                                                                             <rect key="frame" x="33" y="0.0" width="7" height="25"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
@@ -2406,6 +2412,7 @@
                                         <connections>
                                             <outlet property="CaptionVideofield" destination="eav-ma-IiK" id="BD6-i8-530"/>
                                             <outlet property="btnLike" destination="i40-r4-Mqz" id="sK9-bI-tHJ"/>
+                                            <outlet property="btnShare" destination="DQk-8Z-Ywx" id="bpa-Ax-Yda"/>
                                             <outlet property="imgCommentButton" destination="OCW-zu-nQi" id="KXf-wM-1fB"/>
                                             <outlet property="imgProfileUser" destination="ibe-1k-hEZ" id="krl-GI-uru"/>
                                             <outlet property="imgVideoThumb" destination="bs0-pH-qTx" id="iWD-9C-3hp"/>
@@ -2483,7 +2490,7 @@
                                                                 <constraint firstAttribute="height" constant="20" id="VeI-Ek-R4d"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="caption" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2kx-d5-tX1">
@@ -2713,7 +2720,7 @@
                                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tùng Crown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fwj-sR-EI8">
                                                                             <rect key="frame" x="0.0" y="0.0" width="82" height="17"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="WbT-qq-q0s">
@@ -2730,7 +2737,7 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="aMS-YZ-e34">
                                                                             <rect key="frame" x="0.0" y="0.0" width="53" height="17"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="lượt xem " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-ud-eYx">
@@ -2832,13 +2839,14 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QGH-x2-r16">
                                                                     <rect key="frame" x="128" y="0.0" width="40" height="25"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="9pc-MN-xyN">
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvW-AU-1kF">
                                                                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="25" id="47K-Yy-AK9"/>
-                                                                                <constraint firstAttribute="width" constant="25" id="st7-7j-UmQ"/>
+                                                                                <constraint firstAttribute="width" constant="25" id="BbG-Hw-Ben"/>
+                                                                                <constraint firstAttribute="height" constant="25" id="oEH-X5-HB0"/>
                                                                             </constraints>
-                                                                        </imageView>
+                                                                            <state key="normal" image="share"/>
+                                                                        </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Oh6-j1-GkR">
                                                                             <rect key="frame" x="33" y="0.0" width="7" height="25"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
@@ -2897,11 +2905,11 @@
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="OHW-Rt-nG6"/>
-                                                            <exclude reference="tCQ-rK-ewq"/>
+                                                            <exclude reference="4XO-nf-9zw"/>
                                                             <exclude reference="iiI-HE-JCo"/>
                                                             <exclude reference="kNh-CG-d3A"/>
+                                                            <exclude reference="tCQ-rK-ewq"/>
                                                             <exclude reference="unS-Nr-rt3"/>
-                                                            <exclude reference="4XO-nf-9zw"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -2917,6 +2925,7 @@
                                         <connections>
                                             <outlet property="CaptionVideofield" destination="wNW-gM-Zxq" id="7tK-xb-meU"/>
                                             <outlet property="btnLike" destination="mzj-vB-WkY" id="xQu-SO-D9e"/>
+                                            <outlet property="btnShare" destination="qvW-AU-1kF" id="kFp-nY-y99"/>
                                             <outlet property="imgCommentButton" destination="D0P-2l-KJR" id="u6l-uI-lXR"/>
                                             <outlet property="imgProfileUser" destination="iun-oq-HBg" id="7qj-8U-VY7"/>
                                             <outlet property="imgVideoThumb" destination="g3F-PD-v4B" id="YtJ-2r-GJo"/>
@@ -3019,7 +3028,7 @@
                                                                 <constraint firstAttribute="width" constant="100" id="hdd-01-JwW"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -3210,7 +3219,7 @@
                                             <constraint firstAttribute="width" constant="584" id="Ber-br-2Os"/>
                                             <constraint firstAttribute="width" secondItem="hGP-qx-bF7" secondAttribute="height" multiplier="1:1" id="RKW-IJ-pKk"/>
                                         </constraints>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -3269,7 +3278,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TGi-Py-OC4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="" image="notification" selectedImage="notification-active" id="T0W-1K-QXs">
-                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EBO-zX-nij">
@@ -3297,7 +3306,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4ha-QG-0op" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="explorer" selectedImage="explorer-active" id="f3C-rK-xKJ">
-                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y38-pq-5nc">
@@ -3324,7 +3333,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UsA-19-NNm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="home" selectedImage="home-active" id="K2Z-lZ-FVq">
-                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SdE-xM-gPQ">
@@ -3350,7 +3359,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m4U-GW-0Jc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" selectedImage="profile-active" id="QxE-YE-sOi">
-                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="06Y-WI-50d">
@@ -3382,21 +3391,23 @@
         <image name="comment" width="80" height="80"/>
         <image name="explorer" width="25" height="25"/>
         <image name="explorer-active" width="25" height="25"/>
-        <image name="follow" width="27" height="25"/>
-        <image name="follow-not" width="55" height="50"/>
-        <image name="girl" width="1365" height="1365"/>
-        <image name="home" width="31" height="25"/>
-        <image name="home-active" width="31" height="25"/>
+        <image name="featured" width="50" height="50"/>
+        <image name="follow" width="25" height="25"/>
+        <image name="follow-not" width="50" height="50"/>
+        <image name="home" width="25" height="25"/>
+        <image name="home-active" width="25" height="25"/>
         <image name="logo" width="144" height="44"/>
         <image name="logo-white" width="115" height="114"/>
         <image name="loved" width="81" height="80"/>
+        <image name="new" width="50" height="50"/>
         <image name="next" width="43" height="67"/>
-        <image name="notification" width="23" height="25"/>
-        <image name="notification-active" width="23" height="25"/>
-        <image name="profile" width="23" height="25"/>
-        <image name="profile-active" width="23" height="25"/>
+        <image name="notification" width="25" height="25"/>
+        <image name="notification-active" width="25" height="25"/>
+        <image name="profile" width="25" height="25"/>
+        <image name="profile-active" width="25" height="25"/>
         <image name="record" width="201" height="200"/>
         <image name="security" width="94" height="115"/>
         <image name="share" width="81" height="80"/>
+        <image name="trend" width="50" height="50"/>
     </resources>
 </document>

@@ -225,16 +225,25 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBAction func btnMenuQuickACTION(sender: UIButton) {
         let tag = sender.tag
         var cateId: String!
+        var cateName: String!
         
         if tag == 1 {
-            cateId = "New"
+            cateId = "created"
+            cateName = "Mới Toanh"
         } else if tag == 2 {
-            cateId = "Hot"
+            cateId = "hot"
+            cateName = "Hot"
         } else if tag == 3 {
-            cateId = "Hit"
+            cateId = "featured"
+            cateName = "Trào lưu"
         }
-        
-        performSegueWithIdentifier("ShowExploreVC", sender: cateId)
+        if let showExploreVC = storyboard?.instantiateViewControllerWithIdentifier("ShowExploreVC") as? ShowExploreVC {
+            showExploreVC.type = "hot"
+            showExploreVC.data = cateId
+            showExploreVC.cateName = cateName
+            self.navigationController?.showViewController(showExploreVC, sender: nil)
+        }
+        //performSegueWithIdentifier("ShowExploreVC", sender: cateId)
     }
     
     func btnChooseCategoryACTION(sender: UIButton) {

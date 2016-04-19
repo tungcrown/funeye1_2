@@ -35,10 +35,10 @@
 		AA584ACD1CA0E99C006492FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA584ACC1CA0E99C006492FC /* AppDelegate.swift */; };
 		AA584ACF1CA0E99C006492FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA584ACE1CA0E99C006492FC /* ViewController.swift */; };
 		AA584AD71CA0E99D006492FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA584AD51CA0E99D006492FC /* LaunchScreen.storyboard */; };
+		AA7ACFC41CC628A400AADAFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7ACFC31CC628A400AADAFA /* Assets.xcassets */; };
 		AA809DFF1CC086040046AEB4 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA809DFE1CC086040046AEB4 /* SettingVC.swift */; };
 		AA809E011CC08C230046AEB4 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA809E001CC08C230046AEB4 /* SettingCell.swift */; };
 		AA809E031CC13A780046AEB4 /* ShowSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA809E021CC13A780046AEB4 /* ShowSearchCell.swift */; };
-		AA809E051CC5E5EE0046AEB4 /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA809E041CC5E5EE0046AEB4 /* Hashtag.swift */; };
 		AA8DD95E1CBCA8E000169E25 /* ViewFollowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8DD95D1CBCA8E000169E25 /* ViewFollowVC.swift */; };
 		AAB9EBDE1CA381E700357059 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB9EBDD1CA381E700357059 /* DataService.swift */; };
 		AAD526FE1CA4EFB500EDF5E8 /* DataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD526FD1CA4EFB500EDF5E8 /* DataApi.swift */; };
@@ -48,7 +48,6 @@
 		AAFD9ECD1CB4A98F0001D7CD /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9ECC1CB4A98F0001D7CD /* ExploreCell.swift */; };
 		AAFD9ECF1CB4A9E40001D7CD /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9ECE1CB4A9E40001D7CD /* ExploreVC.swift */; };
 		AAFD9ED31CB4AC340001D7CD /* MaterialUIViewMenuExplore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9ED21CB4AC340001D7CD /* MaterialUIViewMenuExplore.swift */; };
-		AAFD9ED51CB4B8DD0001D7CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAFD9ED41CB4B8DD0001D7CD /* Assets.xcassets */; };
 		AAFD9ED81CB4BD410001D7CD /* ShowExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9ED71CB4BD410001D7CD /* ShowExploreVC.swift */; };
 		AAFD9EDB1CB57B910001D7CD /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9EDA1CB57B910001D7CD /* ProfileVC.swift */; };
 		AAFD9EDE1CB6175D0001D7CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAFD9EDC1CB6175D0001D7CD /* Main.storyboard */; };
@@ -87,10 +86,10 @@
 		AA584ACE1CA0E99C006492FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AA584AD61CA0E99D006492FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA584AD81CA0E99D006492FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA7ACFC31CC628A400AADAFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA809DFE1CC086040046AEB4 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		AA809E001CC08C230046AEB4 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		AA809E021CC13A780046AEB4 /* ShowSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSearchCell.swift; sourceTree = "<group>"; };
-		AA809E041CC5E5EE0046AEB4 /* Hashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
 		AA8DD95D1CBCA8E000169E25 /* ViewFollowVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFollowVC.swift; sourceTree = "<group>"; };
 		AAB9EBDD1CA381E700357059 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		AAD526FD1CA4EFB500EDF5E8 /* DataApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApi.swift; sourceTree = "<group>"; };
@@ -100,7 +99,6 @@
 		AAFD9ECC1CB4A98F0001D7CD /* ExploreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
 		AAFD9ECE1CB4A9E40001D7CD /* ExploreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
 		AAFD9ED21CB4AC340001D7CD /* MaterialUIViewMenuExplore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialUIViewMenuExplore.swift; sourceTree = "<group>"; };
-		AAFD9ED41CB4B8DD0001D7CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAFD9ED71CB4BD410001D7CD /* ShowExploreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowExploreVC.swift; sourceTree = "<group>"; };
 		AAFD9EDA1CB57B910001D7CD /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AAFD9EDD1CB6175D0001D7CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 				AA391ED41CABB80C007CB7FA /* Friend.swift */,
 				AA391ED81CACB7A4007CB7FA /* Comment.swift */,
 				AA3BE1131CB95E1F00888A72 /* Notification.swift */,
-				AA809E041CC5E5EE0046AEB4 /* Hashtag.swift */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -272,7 +269,7 @@
 		AA584ACB1CA0E99C006492FC /* FunEye1.2 */ = {
 			isa = PBXGroup;
 			children = (
-				AAFD9ED41CB4B8DD0001D7CD /* Assets.xcassets */,
+				AA7ACFC31CC628A400AADAFA /* Assets.xcassets */,
 				AA391EC51CAB800D007CB7FA /* Frameworks */,
 				AA391EC21CAB71C9007CB7FA /* Resources */,
 				AA571C9A1CA106CE0064CA19 /* Services */,
@@ -378,8 +375,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA584AD71CA0E99D006492FC /* LaunchScreen.storyboard in Resources */,
-				AAFD9ED51CB4B8DD0001D7CD /* Assets.xcassets in Resources */,
 				AA391EC41CAB7503007CB7FA /* beach.mp4 in Resources */,
+				AA7ACFC41CC628A400AADAFA /* Assets.xcassets in Resources */,
 				AAFD9EDE1CB6175D0001D7CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,7 +456,6 @@
 				AA391ED71CABDCEC007CB7FA /* ViewCommentVC.swift in Sources */,
 				AA3BE1161CB95E7D00888A72 /* NotificationCell.swift in Sources */,
 				AAD527101CA90D6200EDF5E8 /* CameraVC.swift in Sources */,
-				AA809E051CC5E5EE0046AEB4 /* Hashtag.swift in Sources */,
 				AA584ACF1CA0E99C006492FC /* ViewController.swift in Sources */,
 				AA584ACD1CA0E99C006492FC /* AppDelegate.swift in Sources */,
 				AA571C9E1CA1070F0064CA19 /* Post.swift in Sources */,
@@ -519,7 +515,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: tungbkdn09@gmail.com (998GMS2562)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tungbkdn09@gmail.com (998GMS2562)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -541,6 +538,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "0ca9da97-41bc-4cd5-abe6-215b34c2506b";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -563,7 +561,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: tungbkdn09@gmail.com (998GMS2562)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tungbkdn09@gmail.com (998GMS2562)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -578,6 +577,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "0ca9da97-41bc-4cd5-abe6-215b34c2506b";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -588,6 +588,7 @@
 			baseConfigurationReference = F5DBC37A8DB4E0061C70971E /* Pods-FunEye1.2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: tungbkdn09@gmail.com (998GMS2562)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -597,6 +598,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ylinkee.FunEye1-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0ca9da97-41bc-4cd5-abe6-215b34c2506b";
 			};
 			name = Debug;
 		};
@@ -605,6 +607,7 @@
 			baseConfigurationReference = 08F6731D31B386A9F8B1F686 /* Pods-FunEye1.2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: tungbkdn09@gmail.com (998GMS2562)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -614,6 +617,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ylinkee.FunEye1-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0ca9da97-41bc-4cd5-abe6-215b34c2506b";
 			};
 			name = Release;
 		};

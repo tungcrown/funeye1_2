@@ -200,6 +200,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             cell.btnLike.tag = indexPath.row
             cell.btnLike.addTarget(self, action: #selector(ViewController.likePost(_:)), forControlEvents: .TouchUpInside)
+            
+            cell.btnShare.tag = indexPath.row
+            cell.btnShare.addTarget(self, action: #selector(ViewController.sharePost(_:)), forControlEvents: .TouchUpInside)
         /*
             cell.btnViewProfile.tag = indexPath.row
             cell.btnViewProfile.addTarget(self, action: #selector(ViewController.viewProfileUser(_:)), forControlEvents: .TouchUpInside)
@@ -407,6 +410,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         Alamofire.request(.PUT, URL_PUT_LIKE_POST(postId, isLike: post.isLikePost))
     }
    
+    func sharePost(sender: UIButton) {
+        /*let shareContent = "co gi hot"
+        let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
+        presentViewController(activityViewController, animated: true, completion: {})
+        */
+        let textToShare = "Swift is awesome!  Check out this website about it!"
+        
+        if let myWebsite = NSURL(string: "http://www.google.com/") {
+            let objectsToShare = [textToShare, myWebsite]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+    }
+    
     var isDouleTap = false
     func tapToVideo(sender: UITapGestureRecognizer) {
         isDouleTap = false
