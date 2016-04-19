@@ -7,13 +7,26 @@
 //
 
 import UIKit
+import SocketIOClientSwift
 
 class TabBarController: UITabBarController {
-
+    
+    let socket = SocketIOClient(socketURL: NSURL(string: "http://funeye.net:8080")!, options: [.Log(false), .ForcePolling(true)])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSocketIO()
+    }
+    
+    func setupSocketIO() {
+        socket.on("notification") {data, ack in
+            let tabItems = self.tabBar.items! as [UITabBarItem]
+            tabItems[3].badgeValue = "1"
+        }
         
-//        let tabItems = self.tabBar.items! as [UITabBarItem]   
-//        tabItems[1].selectedImage = UIImage(named: "home-active")
+        socket.on("connect") {data, ack in
+            self.socket.emit("username", USER_ID)
+        }
+        socket.connect()
     }
 }

@@ -9,12 +9,11 @@
 class Notification {
     
     private var _id: String!
-    private var _userSenderId: String!
-    private var _userSenderName: String!
-    private var _userSenderAvatar: String!
+    private var _userSender: Friend!
     
     private var _postId: String?
     private var _postThumb: String?
+    private var _commentContent: String?
     
     private var _type: String!
     private var _timeCreate: String!
@@ -23,16 +22,8 @@ class Notification {
         return _id
     }
     
-    var userSenderId: String {
-        return _userSenderId
-    }
-    
-    var userSenderName: String {
-        return _userSenderName
-    }
-    
-    var userSenderAvatar: String {
-        return _userSenderAvatar
+    var userSender: Friend {
+        return _userSender
     }
     
     var posId: String? {
@@ -41,6 +32,10 @@ class Notification {
     
     var postThumb: String? {
         return _postThumb
+    }
+    
+    var commentContent: String? {
+        return _commentContent
     }
     
     var type: String {
@@ -65,20 +60,13 @@ class Notification {
         }
         
         if let from = dictionary["actorId"] as? Dictionary<String, AnyObject> {
-            if let userName = from["username"] as? String {
-                self._userSenderName = userName
-            }
-            
-            if let userId = from["id"] as? String {
-                self._userSenderId = userId
-            }
-            
-            if let userAvatar = from["avatar"] as? String {
-                self._userSenderAvatar = userAvatar
-            } else {
-                self._userSenderAvatar = "https://graph.facebook.com/tungcrown2016/picture"
-            }
-            
+            self._userSender = Friend(dictionary: from)
+        } else {
+            self._userSender = nil
+        }
+        
+        if let isFollow = dictionary["isFollow"] as? Bool {
+            self._userSender.isFollowing = isFollow
         }
         
         if let from = dictionary["articleId"] as? Dictionary<String, AnyObject> {
@@ -89,10 +77,18 @@ class Notification {
             if let postThumb = from["videothumb"] as? String {
                 self._postThumb = postThumb
             } else {
-                self._postThumb = "https://graph.facebook.com/tungcrown2016/picture"
+                self._postThumb = URL_AVATAR_NIL
             }
-            
         }
+        
+        if let comment = dictionary["commentId"] as? Dictionary<String, AnyObject> {
+            if let content = comment["content"] as? String {
+                self._commentContent = content
+            }
+        } else {
+            self._commentContent = nil
+        }
+        
     }
     
 }

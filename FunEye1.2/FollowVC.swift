@@ -146,32 +146,8 @@ class FollowVC: UIViewController, MFMessageComposeViewControllerDelegate, UITabl
     }
     
     func followFriendsACTION(sender: UIButton) {
-        /*
-        let btnTag = sender.tag
-        let friendId = friends[btnTag].id
-        print("friends id \(friendId)")
-        sender.setTitle("...", forState: .Normal)
-        let indexPath = NSIndexPath(forRow: btnTag, inSection: 0) //NSIndexPath(index: btnTag)
-        
-        if let cell = followTable.cellForRowAtIndexPath(indexPath) {
-            UIView.animateWithDuration(0.5, animations: {
-                cell.alpha = 0.0
-            }) { (true) in
-                
-                Alamofire.request(.PUT, URL_PUT_FOLLOW_FRIEND(friendId, isFollow: true))
-                self.friends.removeAtIndex(btnTag)
-                self.followTable.reloadData()
-            }
-        } else {
-            print("error")
-        }
-        */
         let tag = sender.tag
-        let friendId = friends[tag].id
-        let isFollowing = !friends[tag].isFollowing
-        
-        Alamofire.request(.PUT, URL_PUT_FOLLOW_FRIEND(friendId, isFollow: isFollowing))
-        friends[tag].isFollowing = isFollowing
+        friends[tag].followFriends()
         followTable.reloadData()
     }
     

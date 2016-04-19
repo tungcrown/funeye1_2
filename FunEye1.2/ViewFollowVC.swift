@@ -124,26 +124,14 @@ class ViewFollowVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func unfollowFriendsACTION(sender: UIButton) {
-
         let tag = sender.tag
-        let friendId = friends[tag].id
-        let isFollowing = !friends[tag].isFollowing
-        Alamofire.request(.PUT, URL_PUT_FOLLOW_FRIEND(friendId, isFollow: isFollowing))
-        friends[tag].isFollowing = isFollowing
+        friends[tag].followFriends()
         tableView.reloadData()
     }
     
     func viewProfileACTION(sender: UITapGestureRecognizer) {
         let tag = sender.view?.tag
-        let friend = friends[tag!]
-        
-        if let profileVC = storyboard!.instantiateViewControllerWithIdentifier("ProfileVC") as? ProfileVC {
-            profileVC.userId = friend.id
-            profileVC.userAvatar = friend.avatarUrl
-            profileVC.userName = friend.username
-            
-            self.navigationController?.showViewController(profileVC, sender: nil)
-        }
+        friends[tag!].viewProfileDetail(self)
     }
     @IBAction func sgmChangeValue(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {

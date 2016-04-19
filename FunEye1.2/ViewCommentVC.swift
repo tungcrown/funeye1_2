@@ -175,6 +175,17 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         UITableViewCell {
 
         if let cell = tableView.dequeueReusableCellWithIdentifier("ViewCommentCell") as? ViewCommentCell {
+            let tag = indexPath.row
+            cell.lblUserName.tag = indexPath.row
+            let tapUsername = UITapGestureRecognizer(target: self, action: #selector(self.viewUserName(_:)))
+            tapUsername.numberOfTapsRequired = 1
+            cell.lblUserName.userInteractionEnabled = true
+            cell.lblUserName.addGestureRecognizer(tapUsername)
+            
+            let tapHastag = UITapGestureRecognizer(target: self, action: #selector(self.myMethodToHandleTap(_:)))
+            tapHastag.numberOfTapsRequired = 1
+            cell.txtviewCaption.addGestureRecognizer(tapHastag)
+            
             cell.configureCell(comments[indexPath.row])
             return cell
         } else {
@@ -188,11 +199,48 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
     }
    
+    func viewUserName(sender: UITapGestureRecognizer) {
+        let tag = sender.view?.tag
+        let person = comments[tag!].user
+        person.viewProfileDetail(self)
+    }
+    
+    func myMethodToHandleTap(sender: UITapGestureRecognizer) {
+        let myTextView = sender.view as! UITextView
+        let layoutManager = myTextView.layoutManager
+        
+        var location = sender.locationInView(myTextView)
+        location.x -= myTextView.textContainerInset.left;
+        location.y -= myTextView.textContainerInset.top;
+        
+        let characterIndex = layoutManager.characterIndexForPoint(location, inTextContainer: myTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        
+        if characterIndex < myTextView.textStorage.length {
+            
+            let attributeName = "Hashtag"
+            let attributeValue = myTextView.attributedText.attribute(attributeName, atIndex: characterIndex, effectiveRange: nil) as? String
+            if let value = attributeValue {
+                print("You tapped on \(attributeName) and the value is: \(value)")
+                let dataPass = value
+                
+                if let showExploreVC = storyboard!.instantiateViewControllerWithIdentifier("ShowExploreVC") as? ShowExploreVC {
+                    showExploreVC.type = "hashtag"
+                    showExploreVC.data = dataPass
+                    showExploreVC.cateName = dataPass
+                    
+                    self.navigationController?.showViewController(showExploreVC, sender: nil)
+                }
+            }
+            
+        }
+    }
+    
     func showAlertClickComment(indexPath: Int) {
         
         let comment = comments[indexPath]
+        let person = comment.user
         let commentId = comment.id
-        let userName = comment.userName
+        let userName = person.username
         
         let myActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
@@ -212,7 +260,7 @@ class ViewCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             print("Cancel action button tapped")
         }
         
-        if comment.userId == USER_ID {
+        if person.id == USER_ID {
             myActionSheet.addAction(deleteAction)
         } else {
             myActionSheet.addAction(blockAction)

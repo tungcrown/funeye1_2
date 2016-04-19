@@ -102,7 +102,7 @@ func timeAgoSinceDate(date:NSDate, numericDates:Bool) -> String {
             return "Last week"
         }
     } else if (components.day >= 2) {
-        return "\(components.day) days ago"
+        return "\(components.day) d"
     } else if (components.day >= 1){
         if (numericDates){
             return "1d"
@@ -128,7 +128,7 @@ func timeAgoSinceDate(date:NSDate, numericDates:Bool) -> String {
     } else if (components.second >= 3) {
         return "\(components.second)s"
     } else {
-        return "Just now"
+        return "mới toanh"
     }
     
 }

@@ -130,9 +130,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func setupSocketIO() {
-        print("USER_ID \(USER_ID)")
-        
-        
         socket.on("viewed") {data, ack in
             print("nhay view ")
             if let postId = data as? [Dictionary<String, AnyObject>] {
@@ -148,7 +145,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
                 
             }
-            //self.socket.emit("username", 10)
         }
         socket.on("liked") {data, ack in
             if let postId = data as? [Dictionary<String, AnyObject>] {
@@ -166,19 +162,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
             }
         }
-        
-        socket.on("notification") {data, ack in 
-            print("data notification \(data)")
-            for item in self.tabBarController!.tabBar.items! {
-                if item.tag == 1 {
-                    item.badgeValue = "1"
+        /*
+        socket.on("notification") {data, ack in
+            
+            if self.tabBarController != nil {
+                if let items = self.tabBarController!.tabBar.items {
+                    for item in items {
+                        if item.tag == 1 {
+                            item.badgeValue = "1"
+                        }
+                    }
                 }
             }
         }
         
         socket.on("connect") {data, ack in
             self.socket.emit("username", USER_ID)
-        }
+        }*/
         socket.connect()
     }
     

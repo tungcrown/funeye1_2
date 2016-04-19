@@ -209,7 +209,7 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 tapUsername.numberOfTapsRequired = 1
                 cell.textViewData.addGestureRecognizer(tapUsername)
                 
-                cell.configureCellUser(friend)
+                cell.configureCellUser(friend, tag: indexPath.row)
             } else if indexSearch == 2 {
                 let hashtag = searchDataHashtag[indexPath.row]
                 print("hashtag \(hashtag)")
@@ -315,8 +315,6 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             } else {
                 if let res = response.result.value as? Dictionary<String, AnyObject> {
                     if let jsons = res["data"] as? [Dictionary<String, AnyObject>] {
-                        
-                        print("jsons.count \(jsons.count)")
                         if jsons.count == 0 {
                             print("data search empty")
                         } else {
@@ -386,5 +384,11 @@ class ExploreVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 }
             }
         }
+    }
+    
+    func followFriendsACTION(sender: UIButton) {
+        let tag = sender.tag
+        searchDataPeople[tag].followFriends()
+        tableviewSearch.reloadData()
     }
 }

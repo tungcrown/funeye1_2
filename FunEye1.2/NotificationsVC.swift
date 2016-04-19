@@ -19,6 +19,10 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     var refreshControl: UIRefreshControl!
     
+    var notificationsType = ["comment", "like", "follow", "post"]
+    let threshold: CGFloat = 100.0 // threshold from bottom of tableView
+    var isLoadingMore = false // flag
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,8 +31,19 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         setupRefreshConrol()
         
-        loadDataViaAPI()
+        loadDataViaAPI(1)
         putNotificationRead()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        for item in self.tabBarController!.tabBar.items! {
+            if item.tag == 1 {
+                if item.badgeValue != nil {
+                    item.badgeValue = nil
+                    loadDataViaAPI(1)
+                }
+            }
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -43,19 +58,28 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         if let cell = tableView.dequeueReusableCellWithIdentifier("NotificationCell") as? NotificationCell {
             let noti = notifications[indexPath.row]
-            
-            
-            let tap = UITapGestureRecognizer(target: self, action: #selector(NotificationsVC.myMethodToHandleTap(_:)))
-            tap.numberOfTapsRequired = 1
-            cell.messageTxt.addGestureRecognizer(tap)
-           
-            cell.imgVideoThumb.tag = indexPath.row
-            let tapImg = UITapGestureRecognizer(target: self, action: #selector(NotificationsVC.showViewSingleVC(_:)))
-            tapImg.numberOfTapsRequired = 1
-            cell.imgVideoThumb.userInteractionEnabled = true
-            cell.imgVideoThumb.addGestureRecognizer(tapImg)
-            
-            cell.configureCell(noti)
+            if noti.type == notificationsType[2] {
+                let tap = UITapGestureRecognizer(target: self, action: #selector(NotificationsVC.myMethodToHandleTap(_:)))
+                tap.numberOfTapsRequired = 1
+                cell.messageTxt.tag = indexPath.row
+                cell.messageTxt.addGestureRecognizer(tap)
+                //let friend = noti.userSender
+                cell.configureCellFollow(noti, tag: indexPath.row)
+                
+            } else {
+                let tap = UITapGestureRecognizer(target: self, action: #selector(NotificationsVC.myMethodToHandleTap(_:)))
+                tap.numberOfTapsRequired = 1
+                cell.messageTxt.tag = indexPath.row
+                cell.messageTxt.addGestureRecognizer(tap)
+                
+                cell.imgVideoThumb.tag = indexPath.row
+                let tapImg = UITapGestureRecognizer(target: self, action: #selector(NotificationsVC.showViewSingleVC(_:)))
+                tapImg.numberOfTapsRequired = 1
+                cell.imgVideoThumb.userInteractionEnabled = true
+                cell.imgVideoThumb.addGestureRecognizer(tapImg)
+                
+                cell.configureCell(noti)
+            }
             return cell
         } else {
             return NotificationCell()
@@ -66,9 +90,17 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         Alamofire.request(.PUT, URL_PUT_READ_NOTIFICATION)
     }
     
-    func loadDataViaAPI() {
-        let url =  URL_GET_NOTIFICATION("1")
-        
+    func loadDataViaAPI(page: Int?) {
+        indicator.startAnimating()
+        isLoadingMore = true
+        var url: String!
+        if page == nil {
+            url =  URL_GET_NOTIFICATION("\(nextCmtPage)")
+        } else {
+            notifications = []
+            url =  URL_GET_NOTIFICATION("1")
+        }
+        print("url page \(page) \(url)")
         Alamofire.request(.GET, url).responseJSON { response in
             if let res = response.result.value as? Dictionary<String, AnyObject> {
                 if let jsons = res["data"] as? [Dictionary<String, AnyObject>] {
@@ -83,23 +115,22 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 if let isNext = res["isNext"] as? Bool where isNext == true {
                     self.nextCmtPage += 1
                     self.refreshControl.endRefreshing()
+                    self.isLoadingMore = false
                 } else {
-                    self.refreshControl.endRefreshing()
-                    self.refreshControl.removeFromSuperview()
-                    
+                    if page != nil {
+                        self.refreshControl.endRefreshing()
+                    } else {
+                        self.refreshControl.removeFromSuperview()
+                    }
+                    //self.refreshControl.endRefreshing()
                 }
-                
                 self.indicator.stopAnimating()
-            } else {
-                print("comment nil")
             }
         }
     }
     func setupRefreshConrol() {
         indicator.center = view.center
         view.addSubview(indicator)
-        indicator.startAnimating()
-
         
         refreshControl = UIRefreshControl()
         //refreshControl.attributedTitle = NSAttributedString(string: "")
@@ -110,7 +141,7 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func refresh(sender:AnyObject)
     {
         print("load new data refresh")
-        loadDataViaAPI()
+        loadDataViaAPI(1)
     }
     
     func setupTapOnNotification() {
@@ -122,7 +153,7 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         let myTextView = sender.view as! UITextView
         let layoutManager = myTextView.layoutManager
-        
+        let tag = myTextView.tag
         // location of tap in myTextView coordinates and taking the inset into account
         var location = sender.locationInView(myTextView)
         location.x -= myTextView.textContainerInset.left;
@@ -143,18 +174,12 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             print("character at index: \(substring)")
             
             // check if the tap location has a certain attribute
-            let attributeName = "MyCustomAttributeName"
+            let attributeName = "notification"
             let attributeValue = myTextView.attributedText.attribute(attributeName, atIndex: characterIndex, effectiveRange: nil) as? String
-            if let value = attributeValue {
-                print("You tapped on \(attributeName) and the value is: \(value)")
-                let dataPass = value
-                //self.performSegueWithIdentifier("ViewSinglePostVC", sender: dataPass)
-                if let profileVC = storyboard!.instantiateViewControllerWithIdentifier("ProfileVC") as? ProfileVC {
-                    profileVC.userId = dataPass
-                    self.navigationController?.showViewController(profileVC, sender: nil)
-                }
+            if attributeValue != nil {
+                let friend = self.notifications[tag].userSender
+                friend.viewProfileDetail(self)
             }
-            
         }
     }
     
@@ -193,4 +218,29 @@ class NotificationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         }
     }
+    
+    func followFriendsACTION(sender: UIButton) {
+        print("tap tap follow")
+        let tag = sender.tag
+        let friend = notifications[tag].userSender
+        friend.followFriends()
+        notificationsTable.reloadData()
+    }
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let contentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+        
+        if !isLoadingMore && (maximumOffset - contentOffset <= threshold) {
+            loadDataViaAPI(nil)
+        }
+    }
+    
+    @IBAction func viewFollowVC(sender: AnyObject) {
+        print("ta folowvc")
+        
+        if let followVC = storyboard?.instantiateViewControllerWithIdentifier("FollowVC") as? FollowVC {
+            self.navigationController?.showViewController(followVC, sender: nil)
+        }
+    }
+    
 }

@@ -13,6 +13,7 @@ class ShowSearchCell: UITableViewCell {
     
     
     @IBOutlet weak var uivContainerCell: UIView!
+    @IBOutlet weak var uivShowFollowBtn: UIView!
     
     @IBOutlet weak var imgUserAvt: UIImageView!
     @IBOutlet weak var imgVideoThumb: UIImageView!
@@ -26,11 +27,30 @@ class ShowSearchCell: UITableViewCell {
         imgUserAvt.clipsToBounds = true
     }
     
-    func configureCellUser(person: Friend) {
+    func configureCellUser(person: Friend, tag: Int) {
         let username = person.name
+        var image: UIImage!
+        if person.isFollowing {
+            image = UIImage(named: "follow-active")
+        } else {
+            image = UIImage(named: "follow-not")
+        }
+        
+        let frame = CGRectMake(8, 8, 25, 25)
+        let btnFollow = UIButton(frame: frame)
+        btnFollow.setBackgroundImage(image, forState: .Normal)
+        btnFollow.tag = tag
+        
+        for subviews in uivShowFollowBtn.subviews {
+            subviews.removeFromSuperview()
+        }
+        
+        btnFollow.addTarget(ExploreVC(), action: #selector(ExploreVC.followFriendsACTION(_:)), forControlEvents: .TouchUpInside)
+        uivShowFollowBtn.addSubview(btnFollow)
+        
         textViewData.attributedText = setAttrTextFieldUsername(username, text: "", userId: person.id)
         DataService.instance.downloadAndSetImageFromUrl(person.avatarUrl, imgView: imgUserAvt, imageCache: ViewController.imageCache)
-        imgVideoThumb.image = nil
+
     }
    
     func configureCellPost(post: Post) {
@@ -41,6 +61,7 @@ class ShowSearchCell: UITableViewCell {
         
         DataService.instance.downloadAndSetImageFromUrl(post.userAvatar, imgView: imgUserAvt, imageCache: ViewController.imageCache)
         DataService.instance.downloadAndSetImageFromUrl(post.videoThumb, imgView: imgVideoThumb, imageCache: ViewController.imageCache)
+        
     }
     
     func configureCellHashtag(name: String, count: String) {

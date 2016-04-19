@@ -5,6 +5,7 @@
 //  Created by Lê Thanh Tùng on 3/30/16.
 //  Copyright © 2016 Lê Thanh Tùng. All rights reserved.
 //
+import Alamofire
 
 class Friend {
     private var _name: String!
@@ -16,6 +17,9 @@ class Friend {
     private var _arrayFollower: [String]?
     private var _arrayFollowing: [String]?
     private var _isFollowing: Bool = false
+    
+    private var imageAvatarCache = NSCache()
+    private var _avatarUIImage: UIImage!
     
     var name: String {
         return _name
@@ -50,11 +54,15 @@ class Friend {
         return _avatarUrl
     }
     
+    var avatarUIImage: UIImage {
+        return _avatarUIImage
+    }
+    
     var message: String {
         return _message
     }
     
-    init(name: String, id: String, avatarUrl: String?, message: String) {
+    init(name: String, id: String, avatarUrl: String?, message: String?) {
         self._name = name
         self._id = id
         if avatarUrl == nil {
@@ -62,7 +70,11 @@ class Friend {
         } else {
             self._avatarUrl = avatarUrl
         }
-        self._message = message
+        if message == nil {
+            self._message = ""
+        } else {
+            self._message = message
+        }
     }
     
     init(dictionary: Dictionary<String, AnyObject>) {
@@ -113,6 +125,41 @@ class Friend {
         
         if let provider = dictionary["provider"] as? String {
             self._message = provider
+        }
+        
+        //downloadAndSaveCacheImage()
+    }
+    
+    func followFriends() {
+        let isFollowing = !self._isFollowing
+        Alamofire.request(.PUT, URL_PUT_FOLLOW_FRIEND(self._id, isFollow: isFollowing))
+        self._isFollowing = isFollowing
+    }
+    
+    func viewProfileDetail(uiviewcontroller: UIViewController) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let profileVC = storyboard.instantiateViewControllerWithIdentifier("ProfileVC") as? ProfileVC {
+            profileVC.userId = _id
+            profileVC.userAvatar = _avatarUrl
+            profileVC.userName = _name
+            uiviewcontroller.navigationController?.showViewController(profileVC, sender: nil)
+        }
+    }
+    
+    func downloadAndSaveCacheImage(imageView: UIImageView) {
+        let url = _avatarUrl
+        let img = imageAvatarCache.objectForKey(url) as? UIImage
+        if img != nil {
+            imageView.image = img
+        } else {
+            Alamofire.request(.GET, url).validate(contentType: ["image/*"]).response(completionHandler: { (request: NSURLRequest?, response: NSHTTPURLResponse?, data: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    let img = UIImage(data: data!)!
+                    imageView.image = img
+                    //save cache
+                    self.imageAvatarCache.setObject(img, forKey: url)
+                }
+            })
         }
     }
 }
